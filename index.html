@@ -323,7 +323,7 @@ footer .copy{margin-top:8px;opacity:.55;}
 const CONFIG = {
   name:      "Fit-Inn Trier",
   initials:  "FIT",
-  avatar:    "avatar.jpg",        // Avatar-Foto/-Logo – leer lassen ("") für Initialen
+  avatar:    "logo.png",          // Avatar-Foto/-Logo – leer lassen ("") für Initialen
   tagline:   "Dein Premium Fitnessstudio in Trier – seit 1996",
   instagram: "@fit_inn_trier",
 
@@ -416,6 +416,9 @@ const brandEl = document.getElementById('brandName'); if(brandEl) brandEl.textCo
 if(CONFIG.avatar){
   const img=document.createElement('img');
   img.src=CONFIG.avatar; img.alt=CONFIG.name; img.className='avatar-img';
+  if(CONFIG.avatar.match(/\.(png|svg)$/i)){
+    img.style.objectFit='contain';img.style.background='transparent';img.style.padding='10px';
+  }
   document.getElementById('avatarInitials').replaceWith(img);
 }else{
   document.getElementById('avatarInitials').textContent = CONFIG.initials;
