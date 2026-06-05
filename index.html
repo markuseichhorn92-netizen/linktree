@@ -228,6 +228,29 @@ footer .copy{margin-top:8px;opacity:.55;}
 .reveal{opacity:0;transform:translateY(18px);animation:rise .7s var(--ease) forwards;}
 @keyframes rise{to{opacity:1;transform:none;}}
 
+/* ── CURSOR SPOTLIGHT (inside .bg layer) ── */
+#spotlight{position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(500px at var(--sx,-999px) var(--sy,-999px),rgba(25,198,230,.11),transparent 72%);}
+
+/* ── CARD SHIMMER SWEEP ── */
+.link::after{content:'';position:absolute;top:0;left:0;width:100%;height:100%;border-radius:inherit;
+  pointer-events:none;
+  background:linear-gradient(105deg,transparent 28%,rgba(255,255,255,.11) 50%,transparent 72%);
+  transform:translateX(-110%);transition:transform 0s;}
+.link:hover::after{transform:translateX(210%);transition:transform .55s ease;}
+
+/* ── TYPEWRITER CURSOR ── */
+.tw-cursor{display:inline-block;width:2px;height:.82em;background:rgba(25,198,230,.8);
+  margin-left:1px;vertical-align:text-bottom;animation:blink .72s ease-in-out infinite;}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+
+/* ── STAT POP ── */
+@keyframes statPop{
+  0%{transform:scale(.5) translateY(6px);opacity:0}
+  65%{transform:scale(1.18)}
+  100%{transform:scale(1);opacity:1}
+}
+
 @media(prefers-reduced-motion:reduce){
   *{animation:none!important;transition:none!important;}
   .reveal{opacity:1;transform:none;}
@@ -236,6 +259,7 @@ footer .copy{margin-top:8px;opacity:.55;}
 </head>
 <body>
 <div class="bg">
+  <div id="spotlight"></div>
   <div class="orb a"></div><div class="orb b"></div><div class="orb c"></div>
 </div>
 <div class="grain"></div>
@@ -488,21 +512,30 @@ CONFIG.socials.forEach(s=>{
   }
 })();
 
-// Counter animation for stats
+// Real stats counter (numbers count up on reveal)
 (function(){
-  const obs = new IntersectionObserver(entries=>{
+  function countUp(el,end,suffix,dur){
+    const isFloat=end!==Math.floor(end);
+    const t0=performance.now();
+    el.style.animation='statPop .65s var(--ease) both';
+    const step=t=>{
+      const p=Math.min((t-t0)/dur,1);
+      const v=(1-Math.pow(1-p,4))*end;
+      el.textContent=(isFloat?v.toFixed(1).replace('.',','):Math.round(v))+suffix;
+      if(p<1)requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  }
+  function parseStat(s){const m=s.match(/^([\d,.]+)(.*)$/);return m?{v:parseFloat(m[1].replace(',','.')),s:m[2]}:{v:0,s:s};}
+  const els=document.querySelectorAll('.stat-num');
+  const obs=new IntersectionObserver(entries=>{
     entries.forEach(e=>{
-      if(e.isIntersecting){
-        e.target.querySelectorAll('.stat-num').forEach(el=>{
-          el.style.animation='none';
-          el.style.animation='countIn .8s var(--ease) forwards';
-        });
-        obs.unobserve(e.target);
-      }
+      if(!e.isIntersecting)return;
+      CONFIG.stats.forEach((st,i)=>{if(els[i]){const{v,s}=parseStat(st.num);if(v>0)countUp(els[i],v,s,1100+i*180);}});
+      obs.unobserve(e.target);
     });
   },{threshold:.5});
-  const sr = document.getElementById('statsRow');
-  if(sr) obs.observe(sr);
+  const sr=document.getElementById('statsRow');if(sr)obs.observe(sr);
 })();
 
 // Ripple + Tracking
@@ -527,6 +560,76 @@ document.addEventListener('click',e=>{
   // Meta: window.fbq && fbq('trackCustom','LinkClick',{link:n});
   console.log('[track]',n);
 });
+
+// ── WOW EFFECTS ────────────────────────────────────────────────
+
+// Cursor spotlight: illuminates background behind cursor (desktop only)
+(function(){
+  const sp=document.getElementById('spotlight');
+  if(!sp||!window.matchMedia('(pointer:fine)').matches)return;
+  window.addEventListener('mousemove',e=>{
+    sp.style.setProperty('--sx',e.clientX+'px');
+    sp.style.setProperty('--sy',e.clientY+'px');
+  },{passive:true});
+})();
+
+// 3D perspective tilt on link cards (desktop only)
+(function(){
+  if(!window.matchMedia('(pointer:fine)').matches)return;
+  document.querySelectorAll('.link').forEach(card=>{
+    card.addEventListener('mousemove',e=>{
+      const r=card.getBoundingClientRect();
+      const x=((e.clientX-r.left)/r.width-.5)*12;
+      const y=((e.clientY-r.top)/r.height-.5)*-7;
+      card.style.transform=`perspective(700px) rotateY(${x}deg) rotateX(${y}deg) translateY(-2px)`;
+      card.style.transition='transform .09s linear';
+    });
+    card.addEventListener('mouseleave',()=>{
+      card.style.transform='';
+      card.style.transition='';
+    });
+  });
+})();
+
+// Typewriter animation for tagline (types out after header fades in)
+(function(){
+  const el=document.getElementById('siteTagline');
+  if(!el)return;
+  const text=CONFIG.tagline;
+  el.textContent='';
+  const cur=document.createElement('span');cur.className='tw-cursor';el.appendChild(cur);
+  let i=0;
+  const type=()=>{
+    if(i<text.length){cur.insertAdjacentText('beforebegin',text[i++]);setTimeout(type,28+Math.random()*26);}
+    else setTimeout(()=>cur.style.display='none',1000);
+  };
+  setTimeout(type,850);
+})();
+
+// Hero parallax: image shifts slightly on scroll for depth
+(function(){
+  const img=document.querySelector('.hero-img');
+  if(!img)return;
+  let raf=false;
+  window.addEventListener('scroll',()=>{
+    if(!raf){raf=true;requestAnimationFrame(()=>{
+      img.style.transform=`scale(1.08) translateY(${Math.max(0,window.scrollY)*.2}px)`;
+      raf=false;
+    });}
+  },{passive:true});
+})();
+
+// Magnetic pull on social icons (desktop only)
+(function(){
+  if(!window.matchMedia('(pointer:fine)').matches)return;
+  document.querySelectorAll('.soc').forEach(ic=>{
+    ic.addEventListener('mousemove',e=>{
+      const r=ic.getBoundingClientRect();
+      ic.style.transform=`translateY(-4px) rotate(-4deg) translate(${(e.clientX-r.left-r.width/2)*.35}px,${(e.clientY-r.top-r.height/2)*.35}px)`;
+    });
+    ic.addEventListener('mouseleave',()=>{ic.style.transform='';});
+  });
+})();
 </script>
 </body>
 </html>
