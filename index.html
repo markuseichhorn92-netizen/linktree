@@ -136,11 +136,12 @@ h1{font-family:"Bricolage Grotesque";font-weight:800;font-size:clamp(26px,8vw,34
 .cta .ic{width:48px;height:48px;flex:none;border-radius:13px;display:grid;place-items:center;
   background:rgba(4,24,29,.14);}
 .cta .ic svg{width:26px;height:26px;color:#04181d;}
-.cta .txt{flex:1;}
-.cta .txt b{font-family:"Bricolage Grotesque";font-weight:800;font-size:18px;display:block;letter-spacing:-.3px;}
-.cta .txt small{font-size:12.5px;font-weight:600;opacity:.78;}
-.cta .badge{position:absolute;top:11px;right:12px;font-size:10.5px;font-weight:800;letter-spacing:.6px;
-  background:#04181d;color:var(--accent);padding:4px 9px;border-radius:100px;text-transform:uppercase;}
+.cta .txt{flex:1;min-width:0;}
+.cta .txt b{font-family:"Bricolage Grotesque";font-weight:800;font-size:18px;display:block;letter-spacing:-.3px;line-height:1.2;}
+.cta .txt small{font-size:12.5px;font-weight:600;opacity:.78;display:block;margin-top:3px;}
+.cta .badge{flex:none;align-self:center;font-size:10px;font-weight:800;letter-spacing:.7px;
+  background:rgba(4,24,29,.28);color:#04181d;padding:5px 10px;border-radius:100px;
+  text-transform:uppercase;white-space:nowrap;border:1.5px solid rgba(4,24,29,.18);}
 .cta .shine{position:absolute;top:0;left:-60%;width:50%;height:100%;
   background:linear-gradient(100deg,transparent,rgba(255,255,255,.48),transparent);
   transform:skewX(-18deg);animation:sweep 3.6s ease-in-out infinite;}
