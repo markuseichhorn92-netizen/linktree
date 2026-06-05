@@ -4,11 +4,11 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 <meta name="theme-color" content="#062b34" />
-<title>DEIN NAME · Fitness &amp; Stoffwechsel-Coaching</title>
-<meta name="description" content="Fitnessstudio &amp; persönliches Ernährungs- und Stoffwechsel-Coaching. Jetzt kostenloses Erstgespräch sichern!" />
+<title>Fit-Inn Trier · Premium Fitnessstudio seit 1996</title>
+<meta name="description" content="Dein Premium Fitnessstudio in Trier – über 7.000 zufriedene Mitglieder, Krafttraining, Cardio &amp; Stoffwechsel-Coaching. Jetzt Probetraining sichern!" />
 <meta property="og:type" content="website" />
-<meta property="og:title" content="DEIN NAME · Fitness &amp; Stoffwechsel-Coaching" />
-<meta property="og:description" content="Fitnessstudio &amp; Ernährungs-Coaching – Jetzt kostenloses Erstgespräch buchen! 💪" />
+<meta property="og:title" content="Fit-Inn Trier · Premium Fitnessstudio seit 1996" />
+<meta property="og:description" content="Über 7.000 zufriedene Mitglieder – Krafttraining, Cardio &amp; Stoffwechsel-Coaching in Trier. Jetzt Probetraining buchen! 💪" />
 <meta name="twitter:card" content="summary_large_image" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -72,15 +72,30 @@ body{
 }
 
 /* ── LAYOUT ── */
-.wrap{max-width:var(--maxw);margin:0 auto;padding:46px 22px calc(50px + env(safe-area-inset-bottom));}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px calc(50px + env(safe-area-inset-bottom));}
+
+/* ── HERO ── */
+.hero{position:relative;margin:0 -22px;height:212px;overflow:hidden;border-radius:0 0 30px 30px;}
+.hero-img{width:100%;height:100%;object-fit:cover;object-position:center 58%;
+  transform:scale(1.04);animation:heroZoom 16s var(--ease) infinite alternate;}
+@keyframes heroZoom{to{transform:scale(1.13);}}
+.hero::after{content:"";position:absolute;inset:0;z-index:1;
+  background:
+    radial-gradient(115% 75% at 72% 2%,rgba(255,194,60,.20),transparent 55%),
+    linear-gradient(to bottom,rgba(4,24,29,.05) 0%,rgba(4,24,29,.32) 42%,rgba(4,24,29,.86) 82%,var(--teal-deeper) 100%);}
+.hero .brand{position:absolute;top:calc(15px + env(safe-area-inset-top));left:17px;z-index:2;
+  display:flex;align-items:center;gap:9px;}
+.hero .brand img{width:30px;height:30px;border-radius:9px;box-shadow:0 4px 14px rgba(0,0,0,.4);}
+.hero .brand b{font-family:"Bricolage Grotesque";font-weight:800;font-size:15px;
+  letter-spacing:-.3px;color:#fff;text-shadow:0 2px 12px rgba(0,0,0,.55);}
 
 /* ── HEADER ── */
-.head{text-align:center;}
+.head{text-align:center;position:relative;z-index:3;margin-top:-64px;}
 .avatar{
-  width:112px;height:112px;margin:0 auto 20px;border-radius:50%;position:relative;
+  width:118px;height:118px;margin:0 auto 16px;border-radius:50%;position:relative;
   display:grid;place-items:center;
   background:radial-gradient(circle at 50% 38%,#ffffff,#d0f4fb);
-  box-shadow:0 0 0 4px rgba(255,255,255,.10),0 18px 50px -12px rgba(25,198,230,.65);
+  box-shadow:0 0 0 4px var(--teal-deeper),0 0 0 5px rgba(255,255,255,.12),0 18px 50px -12px rgba(25,198,230,.65);
 }
 .avatar::after{content:"";position:absolute;inset:-9px;border-radius:50%;
   background:conic-gradient(from 0deg,#19c6e6,#0F7D96,#FFC23C,#22c55e,#19c6e6);
@@ -136,11 +151,12 @@ h1{font-family:"Bricolage Grotesque";font-weight:800;font-size:clamp(26px,8vw,34
 .cta .ic{width:48px;height:48px;flex:none;border-radius:13px;display:grid;place-items:center;
   background:rgba(4,24,29,.14);}
 .cta .ic svg{width:26px;height:26px;color:#04181d;}
-.cta .txt{flex:1;}
-.cta .txt b{font-family:"Bricolage Grotesque";font-weight:800;font-size:18px;display:block;letter-spacing:-.3px;}
-.cta .txt small{font-size:12.5px;font-weight:600;opacity:.78;}
-.cta .badge{position:absolute;top:11px;right:12px;font-size:10.5px;font-weight:800;letter-spacing:.6px;
-  background:#04181d;color:var(--accent);padding:4px 9px;border-radius:100px;text-transform:uppercase;}
+.cta .txt{flex:1;min-width:0;}
+.cta .txt b{font-family:"Bricolage Grotesque";font-weight:800;font-size:18px;display:block;letter-spacing:-.3px;line-height:1.2;}
+.cta .txt small{font-size:12.5px;font-weight:600;opacity:.78;display:block;margin-top:3px;}
+.cta .badge{flex:none;align-self:center;font-size:10px;font-weight:800;letter-spacing:.7px;
+  background:rgba(4,24,29,.28);color:#04181d;padding:5px 10px;border-radius:100px;
+  text-transform:uppercase;white-space:nowrap;border:1.5px solid rgba(4,24,29,.18);}
 .cta .shine{position:absolute;top:0;left:-60%;width:50%;height:100%;
   background:linear-gradient(100deg,transparent,rgba(255,255,255,.48),transparent);
   transform:skewX(-18deg);animation:sweep 3.6s ease-in-out infinite;}
@@ -212,6 +228,29 @@ footer .copy{margin-top:8px;opacity:.55;}
 .reveal{opacity:0;transform:translateY(18px);animation:rise .7s var(--ease) forwards;}
 @keyframes rise{to{opacity:1;transform:none;}}
 
+/* ── CURSOR SPOTLIGHT (inside .bg layer) ── */
+#spotlight{position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(500px at var(--sx,-999px) var(--sy,-999px),rgba(25,198,230,.11),transparent 72%);}
+
+/* ── CARD SHIMMER SWEEP ── */
+.link::after{content:'';position:absolute;top:0;left:0;width:100%;height:100%;border-radius:inherit;
+  pointer-events:none;
+  background:linear-gradient(105deg,transparent 28%,rgba(255,255,255,.11) 50%,transparent 72%);
+  transform:translateX(-110%);transition:transform 0s;}
+.link:hover::after{transform:translateX(210%);transition:transform .55s ease;}
+
+/* ── TYPEWRITER CURSOR ── */
+.tw-cursor{display:inline-block;width:2px;height:.82em;background:rgba(25,198,230,.8);
+  margin-left:1px;vertical-align:text-bottom;animation:blink .72s ease-in-out infinite;}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+
+/* ── STAT POP ── */
+@keyframes statPop{
+  0%{transform:scale(.5) translateY(6px);opacity:0}
+  65%{transform:scale(1.18)}
+  100%{transform:scale(1);opacity:1}
+}
+
 @media(prefers-reduced-motion:reduce){
   *{animation:none!important;transition:none!important;}
   .reveal{opacity:1;transform:none;}
@@ -220,6 +259,7 @@ footer .copy{margin-top:8px;opacity:.55;}
 </head>
 <body>
 <div class="bg">
+  <div id="spotlight"></div>
   <div class="orb a"></div><div class="orb b"></div><div class="orb c"></div>
 </div>
 <div class="grain"></div>
@@ -227,10 +267,18 @@ footer .copy{margin-top:8px;opacity:.55;}
 
 <div class="wrap">
 
+  <!-- HERO -->
+  <div class="hero reveal" style="animation-delay:.03s">
+    <img class="hero-img" src="hero.jpg" alt="Fit-Inn Trier Studio in Trier" />
+    <div class="brand">
+      <img src="logo.png" alt="" />
+      <b id="brandName">Fit-Inn Trier</b>
+    </div>
+  </div>
+
   <!-- HEADER -->
-  <header class="head reveal" style="animation-delay:.05s">
+  <header class="head reveal" style="animation-delay:.12s">
     <div class="avatar">
-      <!-- Wenn du ein Profilbild hast: <img src="avatar.jpg" alt="Profilbild" class="avatar-img" /> -->
       <div class="avatar-img" id="avatarInitials">FIT</div>
     </div>
     <h1 id="siteName">DEIN NAME
@@ -240,9 +288,9 @@ footer .copy{margin-top:8px;opacity:.55;}
 
     <!-- Stats / Social Proof -->
     <div class="stats reveal" style="animation-delay:.16s" id="statsRow">
-      <div class="stat"><span class="stat-num" id="stat1num">500+</span><span class="stat-lbl">Zufriedene Kunden</span></div>
-      <div class="stat"><span class="stat-num" id="stat2num">4,9★</span><span class="stat-lbl">Google-Bewertung</span></div>
-      <div class="stat"><span class="stat-num" id="stat3num">10+</span><span class="stat-lbl">Jahre Erfahrung</span></div>
+      <div class="stat"><span class="stat-num" id="stat1num">100%</span><span class="stat-lbl">Familiengeführt</span></div>
+      <div class="stat"><span class="stat-num" id="stat2num">4,7 ★</span><span class="stat-lbl">Google-Bewertung</span></div>
+      <div class="stat"><span class="stat-num" id="stat3num">30+</span><span class="stat-lbl">Jahre Erfahrung</span></div>
     </div>
   </header>
 
@@ -266,7 +314,7 @@ footer .copy{margin-top:8px;opacity:.55;}
   </a>
 
   <!-- FURTHER LINKS -->
-  <p class="section-lbl reveal" style="animation-delay:.36s">Weitere Angebote</p>
+  <p class="section-lbl reveal" style="animation-delay:.36s">Angebote &amp; Kontakt</p>
   <div class="links" id="links"></div>
 
   <!-- TRUST BADGE -->
@@ -274,8 +322,8 @@ footer .copy{margin-top:8px;opacity:.55;}
     <div class="trust-icon">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s-7-5.6-7-11a7 7 0 0114 0c0 5.4-7 11-7 11z" stroke-linejoin="round"/><circle cx="12" cy="11" r="2.5"/></svg>
     </div>
-    <div class="trust-txt">Persönlich & individuell – keine Standard-Programme
-      <span>Dein Körper ist einzigartig. Dein Plan auch.</span>
+    <div class="trust-txt">Dein Gesundheitsanbieter in Trier
+      <span>Persönliche Betreuung · über 100 Geräte · Stoffwechsel-Coaching</span>
     </div>
   </div>
 
@@ -297,69 +345,79 @@ footer .copy{margin-top:8px;opacity:.55;}
    👉 HIER ANPASSEN – alles zwischen den ===-Zeichen
    ===================================================================== */
 const CONFIG = {
-  name:      "DEIN NAME",          // Dein Name / Studio-Name
-  initials:  "FIT",                // 2–3 Buchstaben für Avatar (falls kein Bild)
-  tagline:   "Fitnessstudio & Ernährungs-/Stoffwechsel-Coaching",
-  instagram: "@deinhandle",        // Instagram-Handle
+  name:      "Fit-Inn Trier",
+  initials:  "FIT",
+  avatar:    "logo.png",          // Avatar-Foto/-Logo – leer lassen ("") für Initialen
+  tagline:   "Dein Premium Fitnessstudio in Trier – seit 1996",
+  instagram: "@fit_inn_trier",
 
   stats:[
-    { num:"500+", lbl:"Zufriedene Kunden" },
-    { num:"4,9 ★", lbl:"Google-Bewertung" },
-    { num:"10+",  lbl:"Jahre Erfahrung"  },
+    { num:"100%",  lbl:"Familiengeführt" },
+    { num:"4,7 ★", lbl:"Google-Bewertung" },
+    { num:"30+",   lbl:"Jahre Erfahrung" },
   ],
 
-  promo: { show:true, text:"🔥 Kostenloses Erstgespräch sichern – begrenzte Plätze!" },
+  promo: { show:true, text:"🔥 Probetraining sichern – jetzt kostenlos testen!" },
 
-  // Haupt-CTA (der große leuchtende Button)
   primaryCta: {
-    url:   "https://DEINE-BUCHUNGSSEITE.de",   // ← durch echte Buchungs-URL ersetzen
-    label: "Kostenloses Erstgespräch buchen",
+    url:   "https://fit-inn-trier.de/probetraining",
+    label: "Kostenloses Probetraining buchen",
     sub:   "In 2 Minuten Termin sichern →",
     badge: "KOSTENLOS",
   },
 
-  // Weitere Links
   links:[
+    {
+      icon:"heart", cls:"",
+      title:"Stoffwechsel-Coaching",
+      sub:"Atemgasanalyse · individuelle Ernährungs- & Trainingspläne",
+      url:"https://fit-inn-trier.de/stoffwechsel-coaching",
+      track:"stoffwechsel",
+    },
     {
       icon:"web", cls:"",
       title:"Unsere Website",
       sub:"Alles über unser Angebot auf einen Blick",
-      url:"https://DEINE-WEBSITE.de",
+      url:"https://fit-inn-trier.de",
       track:"website",
+    },
+    {
+      icon:"book", cls:"",
+      title:"Sport-Blog",
+      sub:"Tipps zu Training, Ernährung & Gesundheit",
+      url:"https://fit-inn-trier.de/blog",
+      track:"blog",
+    },
+    {
+      icon:"chat", cls:"",
+      title:"Kontakt",
+      sub:"Fragen? Schreib uns – wir melden uns schnell",
+      url:"https://fit-inn-trier.de/kontakt",
+      track:"kontakt",
     },
     {
       icon:"bag", cls:"",
       title:"Online-Shop",
       sub:"Supplements & Coaching-Pakete",
-      url:"https://DEIN-SHOP.de",
+      url:"https://www.figurscout-coach.de/studio/fit-inn-trier/tools/shop",
       track:"shop",
-    },
-    {
-      icon:"whatsapp", cls:"whatsapp",
-      title:"WhatsApp-Kontakt",
-      sub:"Direkt schreiben – schnelle Antwort",
-      url:"https://wa.me/49DEINEHANDYNUMMER",   // ← Nummer anpassen (ohne + oder 0)
-      track:"whatsapp",
     },
     {
       icon:"pin", cls:"",
       title:"Anfahrt & Öffnungszeiten",
-      sub:"DEINE ADRESSE",
-      url:"https://maps.google.com/?q=DEIN+STUDIO+ORT",
+      sub:"Auf Hirtenberg 8, 54296 Trier",
+      url:"https://share.google/XXbpND2zvy5KVzfIi",
       track:"maps",
     },
   ],
 
-  // Social-Icons unten
   socials:[
-    { net:"instagram", url:"https://www.instagram.com/deinhandle" },
-    { net:"tiktok",    url:"https://www.tiktok.com/@deinhandle" },
-    { net:"facebook",  url:"https://www.facebook.com/deinhandle" },
+    { net:"instagram", url:"https://www.instagram.com/fit_inn_trier/" },
+    { net:"facebook",  url:"https://www.facebook.com/FitInnFeyen" },
   ],
 
-  // Footer
-  impressum:   "https://DEINE-WEBSITE.de/impressum",
-  datenschutz: "https://DEINE-WEBSITE.de/datenschutz",
+  impressum:   "https://fit-inn-trier.de/impressum-fit-inn-trier",
+  datenschutz: "https://fit-inn-trier.de/datenschutz-fit-inn-trier",
 };
 /* ===================== Ab hier nichts mehr ändern ===================== */
 
@@ -368,8 +426,10 @@ const ICONS = {
   bag:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 7h12l-1 13H7L6 7z"/><path d="M9 7a3 3 0 016 0" stroke-linecap="round"/></svg>`,
   whatsapp:`<svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.978-1.355A9.963 9.963 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 18a7.965 7.965 0 01-4.074-1.116l-.292-.174-2.956.805.791-2.885-.192-.3A7.952 7.952 0 014 12c0-4.418 3.582-8 8-8s8 3.582 8 8-3.582 8-8 8z"/></svg>`,
   pin:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s7-6 7-12a7 7 0 10-14 0c0 6 7 12 7 12z" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.5"/></svg>`,
+  phone:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 4h3l2 5-2.5 1.5a11 11 0 005 5L14 13l5 2v3a2 2 0 01-2.2 2A16 16 0 013 7.2 2 2 0 015 4z" stroke-linejoin="round"/></svg>`,
   heart:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20s-7-4.5-7-10a4 4 0 017-2.6A4 4 0 0119 10c0 5.5-7 10-7 10z" stroke-linejoin="round"/></svg>`,
   chat:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 5h16v11H8l-4 4V5z" stroke-linejoin="round"/></svg>`,
+  book:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20" stroke-linecap="round"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z" stroke-linejoin="round"/><path d="M9 7h6M9 11h4" stroke-linecap="round"/></svg>`,
 };
 const SOCIAL_ICONS = {
   instagram:`<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.2c3.2 0 3.6 0 4.85.07 3.25.15 4.77 1.69 4.92 4.92.07 1.25.07 1.65.07 4.85s0 3.6-.07 4.85c-.15 3.23-1.66 4.77-4.92 4.92-1.25.07-1.65.07-4.85.07s-3.6 0-4.85-.07c-3.26-.15-4.77-1.7-4.92-4.92C2.2 15.6 2.2 15.2 2.2 12s0-3.6.07-4.85C2.42 3.92 3.94 2.38 7.15 2.27 8.4 2.2 8.8 2.2 12 2.2zm0 4.86A4.94 4.94 0 1012 17a4.94 4.94 0 000-9.88zm0 8.15A3.2 3.2 0 1112 8.8a3.2 3.2 0 010 6.4zm5.13-8.4a1.15 1.15 0 11-1.15-1.15 1.15 1.15 0 011.15 1.15z"/></svg>`,
@@ -382,7 +442,19 @@ const ARROW_SVG = `<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="cu
 // Apply CONFIG
 document.getElementById('siteName').childNodes[0].textContent = CONFIG.name+' ';
 document.getElementById('siteTagline').textContent = CONFIG.tagline;
-document.getElementById('avatarInitials').textContent = CONFIG.initials;
+const brandEl = document.getElementById('brandName'); if(brandEl) brandEl.textContent = CONFIG.name;
+
+// Avatar: Logo-Bild falls gesetzt, sonst Initialen
+if(CONFIG.avatar){
+  const img=document.createElement('img');
+  img.src=CONFIG.avatar; img.alt=CONFIG.name; img.className='avatar-img';
+  if(CONFIG.avatar.match(/\.(png|svg)$/i)){
+    img.style.objectFit='contain';img.style.background='transparent';img.style.padding='10px';
+  }
+  document.getElementById('avatarInitials').replaceWith(img);
+}else{
+  document.getElementById('avatarInitials').textContent = CONFIG.initials;
+}
 document.getElementById('footerName').textContent = CONFIG.name;
 document.getElementById('footerImpressum').href = CONFIG.impressum;
 document.getElementById('footerDatenschutz').href = CONFIG.datenschutz;
@@ -448,21 +520,30 @@ CONFIG.socials.forEach(s=>{
   }
 })();
 
-// Counter animation for stats
+// Real stats counter (numbers count up on reveal)
 (function(){
-  const obs = new IntersectionObserver(entries=>{
+  function countUp(el,end,suffix,dur){
+    const isFloat=end!==Math.floor(end);
+    const t0=performance.now();
+    el.style.animation='statPop .65s var(--ease) both';
+    const step=t=>{
+      const p=Math.min((t-t0)/dur,1);
+      const v=(1-Math.pow(1-p,4))*end;
+      el.textContent=(isFloat?v.toFixed(1).replace('.',','):Math.round(v))+suffix;
+      if(p<1)requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  }
+  function parseStat(s){const m=s.match(/^([\d,.]+)(.*)$/);return m?{v:parseFloat(m[1].replace(',','.')),s:m[2]}:{v:0,s:s};}
+  const els=document.querySelectorAll('.stat-num');
+  const obs=new IntersectionObserver(entries=>{
     entries.forEach(e=>{
-      if(e.isIntersecting){
-        e.target.querySelectorAll('.stat-num').forEach(el=>{
-          el.style.animation='none';
-          el.style.animation='countIn .8s var(--ease) forwards';
-        });
-        obs.unobserve(e.target);
-      }
+      if(!e.isIntersecting)return;
+      CONFIG.stats.forEach((st,i)=>{if(els[i]){const{v,s}=parseStat(st.num);if(v>0)countUp(els[i],v,s,1100+i*180);}});
+      obs.unobserve(e.target);
     });
   },{threshold:.5});
-  const sr = document.getElementById('statsRow');
-  if(sr) obs.observe(sr);
+  const sr=document.getElementById('statsRow');if(sr)obs.observe(sr);
 })();
 
 // Ripple + Tracking
@@ -487,6 +568,76 @@ document.addEventListener('click',e=>{
   // Meta: window.fbq && fbq('trackCustom','LinkClick',{link:n});
   console.log('[track]',n);
 });
+
+// ── WOW EFFECTS ────────────────────────────────────────────────
+
+// Cursor spotlight: illuminates background behind cursor (desktop only)
+(function(){
+  const sp=document.getElementById('spotlight');
+  if(!sp||!window.matchMedia('(pointer:fine)').matches)return;
+  window.addEventListener('mousemove',e=>{
+    sp.style.setProperty('--sx',e.clientX+'px');
+    sp.style.setProperty('--sy',e.clientY+'px');
+  },{passive:true});
+})();
+
+// 3D perspective tilt on link cards (desktop only)
+(function(){
+  if(!window.matchMedia('(pointer:fine)').matches)return;
+  document.querySelectorAll('.link').forEach(card=>{
+    card.addEventListener('mousemove',e=>{
+      const r=card.getBoundingClientRect();
+      const x=((e.clientX-r.left)/r.width-.5)*12;
+      const y=((e.clientY-r.top)/r.height-.5)*-7;
+      card.style.transform=`perspective(700px) rotateY(${x}deg) rotateX(${y}deg) translateY(-2px)`;
+      card.style.transition='transform .09s linear';
+    });
+    card.addEventListener('mouseleave',()=>{
+      card.style.transform='';
+      card.style.transition='';
+    });
+  });
+})();
+
+// Typewriter animation for tagline (types out after header fades in)
+(function(){
+  const el=document.getElementById('siteTagline');
+  if(!el)return;
+  const text=CONFIG.tagline;
+  el.textContent='';
+  const cur=document.createElement('span');cur.className='tw-cursor';el.appendChild(cur);
+  let i=0;
+  const type=()=>{
+    if(i<text.length){cur.insertAdjacentText('beforebegin',text[i++]);setTimeout(type,28+Math.random()*26);}
+    else setTimeout(()=>cur.style.display='none',1000);
+  };
+  setTimeout(type,850);
+})();
+
+// Hero parallax: image shifts slightly on scroll for depth
+(function(){
+  const img=document.querySelector('.hero-img');
+  if(!img)return;
+  let raf=false;
+  window.addEventListener('scroll',()=>{
+    if(!raf){raf=true;requestAnimationFrame(()=>{
+      img.style.transform=`scale(1.08) translateY(${Math.max(0,window.scrollY)*.2}px)`;
+      raf=false;
+    });}
+  },{passive:true});
+})();
+
+// Magnetic pull on social icons (desktop only)
+(function(){
+  if(!window.matchMedia('(pointer:fine)').matches)return;
+  document.querySelectorAll('.soc').forEach(ic=>{
+    ic.addEventListener('mousemove',e=>{
+      const r=ic.getBoundingClientRect();
+      ic.style.transform=`translateY(-4px) rotate(-4deg) translate(${(e.clientX-r.left-r.width/2)*.35}px,${(e.clientY-r.top-r.height/2)*.35}px)`;
+    });
+    ic.addEventListener('mouseleave',()=>{ic.style.transform='';});
+  });
+})();
 </script>
 </body>
 </html>
