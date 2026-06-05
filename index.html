@@ -72,15 +72,30 @@ body{
 }
 
 /* ── LAYOUT ── */
-.wrap{max-width:var(--maxw);margin:0 auto;padding:46px 22px calc(50px + env(safe-area-inset-bottom));}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px calc(50px + env(safe-area-inset-bottom));}
+
+/* ── HERO ── */
+.hero{position:relative;margin:0 -22px;height:212px;overflow:hidden;border-radius:0 0 30px 30px;}
+.hero-img{width:100%;height:100%;object-fit:cover;object-position:center 58%;
+  transform:scale(1.04);animation:heroZoom 16s var(--ease) infinite alternate;}
+@keyframes heroZoom{to{transform:scale(1.13);}}
+.hero::after{content:"";position:absolute;inset:0;z-index:1;
+  background:
+    radial-gradient(115% 75% at 72% 2%,rgba(255,194,60,.20),transparent 55%),
+    linear-gradient(to bottom,rgba(4,24,29,.05) 0%,rgba(4,24,29,.32) 42%,rgba(4,24,29,.86) 82%,var(--teal-deeper) 100%);}
+.hero .brand{position:absolute;top:calc(15px + env(safe-area-inset-top));left:17px;z-index:2;
+  display:flex;align-items:center;gap:9px;}
+.hero .brand img{width:30px;height:30px;border-radius:9px;box-shadow:0 4px 14px rgba(0,0,0,.4);}
+.hero .brand b{font-family:"Bricolage Grotesque";font-weight:800;font-size:15px;
+  letter-spacing:-.3px;color:#fff;text-shadow:0 2px 12px rgba(0,0,0,.55);}
 
 /* ── HEADER ── */
-.head{text-align:center;}
+.head{text-align:center;position:relative;z-index:3;margin-top:-64px;}
 .avatar{
-  width:112px;height:112px;margin:0 auto 20px;border-radius:50%;position:relative;
+  width:118px;height:118px;margin:0 auto 16px;border-radius:50%;position:relative;
   display:grid;place-items:center;
   background:radial-gradient(circle at 50% 38%,#ffffff,#d0f4fb);
-  box-shadow:0 0 0 4px rgba(255,255,255,.10),0 18px 50px -12px rgba(25,198,230,.65);
+  box-shadow:0 0 0 4px var(--teal-deeper),0 0 0 5px rgba(255,255,255,.12),0 18px 50px -12px rgba(25,198,230,.65);
 }
 .avatar::after{content:"";position:absolute;inset:-9px;border-radius:50%;
   background:conic-gradient(from 0deg,#19c6e6,#0F7D96,#FFC23C,#22c55e,#19c6e6);
@@ -228,10 +243,18 @@ footer .copy{margin-top:8px;opacity:.55;}
 
 <div class="wrap">
 
+  <!-- HERO -->
+  <div class="hero reveal" style="animation-delay:.03s">
+    <img class="hero-img" src="hero.jpg" alt="Fit-Inn Trier Studio in Trier" />
+    <div class="brand">
+      <img src="logo.png" alt="" />
+      <b id="brandName">Fit-Inn Trier</b>
+    </div>
+  </div>
+
   <!-- HEADER -->
-  <header class="head reveal" style="animation-delay:.05s">
+  <header class="head reveal" style="animation-delay:.12s">
     <div class="avatar">
-      <!-- Wenn du ein Profilbild hast: <img src="avatar.jpg" alt="Profilbild" class="avatar-img" /> -->
       <div class="avatar-img" id="avatarInitials">FIT</div>
     </div>
     <h1 id="siteName">DEIN NAME
@@ -300,7 +323,7 @@ footer .copy{margin-top:8px;opacity:.55;}
 const CONFIG = {
   name:      "Fit-Inn Trier",
   initials:  "FIT",
-  avatar:    "logo.png",          // Logo/Profilbild – leer lassen ("") für Initialen
+  avatar:    "avatar.jpg",        // Avatar-Foto/-Logo – leer lassen ("") für Initialen
   tagline:   "Dein Premium Fitnessstudio in Trier – seit 1996",
   instagram: "@fit_inn_trier",
 
@@ -387,11 +410,12 @@ const ARROW_SVG = `<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="cu
 // Apply CONFIG
 document.getElementById('siteName').childNodes[0].textContent = CONFIG.name+' ';
 document.getElementById('siteTagline').textContent = CONFIG.tagline;
+const brandEl = document.getElementById('brandName'); if(brandEl) brandEl.textContent = CONFIG.name;
 
 // Avatar: Logo-Bild falls gesetzt, sonst Initialen
 if(CONFIG.avatar){
   const img=document.createElement('img');
-  img.src=CONFIG.avatar; img.alt=CONFIG.name+' Logo'; img.className='avatar-img';
+  img.src=CONFIG.avatar; img.alt=CONFIG.name; img.className='avatar-img';
   document.getElementById('avatarInitials').replaceWith(img);
 }else{
   document.getElementById('avatarInitials').textContent = CONFIG.initials;
