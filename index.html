@@ -231,8 +231,8 @@ footer .copy{margin-top:8px;opacity:.55;}
   <header class="head reveal" style="animation-delay:.05s">
     <div class="avatar">
       <!-- Wenn du ein Profilbild hast: <img src="avatar.jpg" alt="Profilbild" class="avatar-img" /> -->
+      <!-- Profilbild einbinden: <img src="logo.png" alt="Fit-Inn Trier" class="avatar-img" style="object-fit:contain;padding:8px;" /> -->
       <div class="avatar-img" id="avatarInitials">FIT</div>
-      <!-- Profilbild: <img src="avatar.jpg" alt="Fit-Inn Trier" class="avatar-img" /> -->
     </div>
     <h1 id="siteName">DEIN NAME
       <svg class="verified" viewBox="0 0 24 24" fill="currentColor"><path d="M9 12l2 2 4-4M20.618 5.984A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
@@ -267,7 +267,7 @@ footer .copy{margin-top:8px;opacity:.55;}
   </a>
 
   <!-- FURTHER LINKS -->
-  <p class="section-lbl reveal" style="animation-delay:.36s">Weitere Angebote</p>
+  <p class="section-lbl reveal" style="animation-delay:.36s">Angebote &amp; Kontakt</p>
   <div class="links" id="links"></div>
 
   <!-- TRUST BADGE -->
@@ -320,11 +320,25 @@ const CONFIG = {
 
   links:[
     {
+      icon:"heart", cls:"",
+      title:"Stoffwechsel-Coaching",
+      sub:"Atemgasanalyse · individuelle Ernährungs- & Trainingspläne",
+      url:"https://fit-inn-trier.de/stoffwechsel-coaching",
+      track:"stoffwechsel",
+    },
+    {
       icon:"web", cls:"",
       title:"Unsere Website",
       sub:"Alles über unser Angebot auf einen Blick",
       url:"https://fit-inn-trier.de",
       track:"website",
+    },
+    {
+      icon:"whatsapp", cls:"whatsapp",
+      title:"WhatsApp / Kontakt",
+      sub:"Direkt schreiben – schnelle Antwort",
+      url:"https://wa.me/49651308524",
+      track:"whatsapp",
     },
     {
       icon:"bag", cls:"",
@@ -335,7 +349,7 @@ const CONFIG = {
     },
     {
       icon:"pin", cls:"",
-      title:"Anfahrt & Standort",
+      title:"Anfahrt & Öffnungszeiten",
       sub:"Auf Hirtenberg 8, 54296 Trier",
       url:"https://maps.google.com/?q=Auf+Hirtenberg+8,+54296+Trier",
       track:"maps",
