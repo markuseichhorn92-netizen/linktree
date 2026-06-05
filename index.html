@@ -231,7 +231,6 @@ footer .copy{margin-top:8px;opacity:.55;}
   <header class="head reveal" style="animation-delay:.05s">
     <div class="avatar">
       <!-- Wenn du ein Profilbild hast: <img src="avatar.jpg" alt="Profilbild" class="avatar-img" /> -->
-      <!-- Profilbild einbinden: <img src="logo.png" alt="Fit-Inn Trier" class="avatar-img" style="object-fit:contain;padding:8px;" /> -->
       <div class="avatar-img" id="avatarInitials">FIT</div>
     </div>
     <h1 id="siteName">DEIN NAME
@@ -300,13 +299,14 @@ footer .copy{margin-top:8px;opacity:.55;}
 const CONFIG = {
   name:      "Fit-Inn Trier",
   initials:  "FIT",
+  avatar:    "logo.png",          // Logo/Profilbild – leer lassen ("") für Initialen
   tagline:   "Dein Premium Fitnessstudio in Trier – seit 1996",
   instagram: "@fit_inn_trier",
 
   stats:[
     { num:"7.000+", lbl:"Zufriedene Mitglieder" },
-    { num:"250+",   lbl:"Positive Bewertungen" },
-    { num:"25+",    lbl:"Jahre Erfahrung" },
+    { num:"4,7 ★",  lbl:"Google-Bewertung" },
+    { num:"30+",    lbl:"Jahre Erfahrung" },
   ],
 
   promo: { show:true, text:"🔥 Probetraining sichern – jetzt kostenlos testen!" },
@@ -334,17 +334,17 @@ const CONFIG = {
       track:"website",
     },
     {
-      icon:"whatsapp", cls:"whatsapp",
-      title:"WhatsApp / Kontakt",
-      sub:"Direkt schreiben – schnelle Antwort",
-      url:"https://wa.me/49651308524",
-      track:"whatsapp",
+      icon:"phone", cls:"whatsapp",
+      title:"Anrufen & Kontakt",
+      sub:"Mo–So erreichbar · 0651 30 85 24",
+      url:"tel:+49651308524",
+      track:"telefon",
     },
     {
       icon:"bag", cls:"",
       title:"Online-Shop",
       sub:"Supplements & Coaching-Pakete",
-      url:"https://online.fit-inn-trier.de",
+      url:"https://figurscout-coach.de/studio/fit-inn-trier/tools/shop",
       track:"shop",
     },
     {
@@ -361,8 +361,8 @@ const CONFIG = {
     { net:"facebook",  url:"https://www.facebook.com/FitInnFeyen" },
   ],
 
-  impressum:   "https://fit-inn-trier.de/impressum",
-  datenschutz: "https://fit-inn-trier.de/datenschutz",
+  impressum:   "https://fit-inn-trier.de/impressum-fit-inn-trier",
+  datenschutz: "https://fit-inn-trier.de/datenschutz-fit-inn-trier",
 };
 /* ===================== Ab hier nichts mehr ändern ===================== */
 
@@ -371,6 +371,7 @@ const ICONS = {
   bag:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 7h12l-1 13H7L6 7z"/><path d="M9 7a3 3 0 016 0" stroke-linecap="round"/></svg>`,
   whatsapp:`<svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.978-1.355A9.963 9.963 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 18a7.965 7.965 0 01-4.074-1.116l-.292-.174-2.956.805.791-2.885-.192-.3A7.952 7.952 0 014 12c0-4.418 3.582-8 8-8s8 3.582 8 8-3.582 8-8 8z"/></svg>`,
   pin:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s7-6 7-12a7 7 0 10-14 0c0 6 7 12 7 12z" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.5"/></svg>`,
+  phone:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 4h3l2 5-2.5 1.5a11 11 0 005 5L14 13l5 2v3a2 2 0 01-2.2 2A16 16 0 013 7.2 2 2 0 015 4z" stroke-linejoin="round"/></svg>`,
   heart:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20s-7-4.5-7-10a4 4 0 017-2.6A4 4 0 0119 10c0 5.5-7 10-7 10z" stroke-linejoin="round"/></svg>`,
   chat:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 5h16v11H8l-4 4V5z" stroke-linejoin="round"/></svg>`,
 };
@@ -385,7 +386,15 @@ const ARROW_SVG = `<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="cu
 // Apply CONFIG
 document.getElementById('siteName').childNodes[0].textContent = CONFIG.name+' ';
 document.getElementById('siteTagline').textContent = CONFIG.tagline;
-document.getElementById('avatarInitials').textContent = CONFIG.initials;
+
+// Avatar: Logo-Bild falls gesetzt, sonst Initialen
+if(CONFIG.avatar){
+  const img=document.createElement('img');
+  img.src=CONFIG.avatar; img.alt=CONFIG.name+' Logo'; img.className='avatar-img';
+  document.getElementById('avatarInitials').replaceWith(img);
+}else{
+  document.getElementById('avatarInitials').textContent = CONFIG.initials;
+}
 document.getElementById('footerName').textContent = CONFIG.name;
 document.getElementById('footerImpressum').href = CONFIG.impressum;
 document.getElementById('footerDatenschutz').href = CONFIG.datenschutz;
