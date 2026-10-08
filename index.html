@@ -3,655 +3,323 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-<meta name="theme-color" content="#062b34" />
-<title>Fit-Inn Trier · Premium Fitnessstudio seit 1996</title>
-<meta name="description" content="Dein Premium Fitnessstudio in Trier – über 7.000 zufriedene Mitglieder, Krafttraining, Cardio &amp; Stoffwechsel-Coaching. Jetzt Probetraining sichern!" />
+<meta name="color-scheme" content="light dark" />
+<meta name="theme-color" content="#0a4958" />
+<title>Fit-Inn Trier · Fitnessstudio seit 1996</title>
+<meta name="description" content="Fit-Inn Trier – familiengeführtes Fitnessstudio seit 1996: Gerätetraining mit Betreuung und Stoffwechsel-Coaching. Probetraining buchen, anrufen, schreiben oder Route planen." />
 <meta property="og:type" content="website" />
-<meta property="og:title" content="Fit-Inn Trier · Premium Fitnessstudio seit 1996" />
-<meta property="og:description" content="Über 7.000 zufriedene Mitglieder – Krafttraining, Cardio &amp; Stoffwechsel-Coaching in Trier. Jetzt Probetraining buchen! 💪" />
+<meta property="og:title" content="Fit-Inn Trier · Fitnessstudio seit 1996" />
+<meta property="og:description" content="Gerätetraining mit Betreuung und Stoffwechsel-Coaching in Trier. Probetraining buchen, anrufen oder Route planen." />
 <meta name="twitter:card" content="summary_large_image" />
+<link rel="icon" href="logo.png" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Archivo:wght@400;500;600&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 
 <style>
 :root{
-  --teal:#0F7D96;
-  --teal-bright:#19c6e6;
-  --teal-deep:#062b34;
-  --teal-deeper:#04181d;
-  --ink:#eafcff;
-  --muted:rgba(234,252,255,.62);
-  --glass:rgba(255,255,255,.055);
-  --glass-strong:rgba(255,255,255,.09);
-  --stroke:rgba(255,255,255,.12);
-  --accent:#FFC23C;
-  --green:#22c55e;
-  --radius:20px;
-  --maxw:480px;
-  --ease:cubic-bezier(.22,1,.36,1);
+  --teal:#0a4958;
+  --teal-2:#073440;
+  --apricot:#E08C53;
+  --apricot-ink:#2a1405;
+  --bg:#f4f8f9;
+  --card:#ffffff;
+  --ink:#14252D;
+  --muted:#4f6670;
+  --line:#d5e3e7;
+  --accent-text:#0a4958;
+  --open:#1a7f4b;
+  --closed:#a4452c;
+  --focus:#E08C53;
+  --radius:18px;
+  --maxw:520px;
 }
-
+@media (prefers-color-scheme:dark){
+  :root{
+    --bg:#06232b;
+    --card:#0b3440;
+    --ink:#eaf4f6;
+    --muted:#9fbac2;
+    --line:#1b4b59;
+    --accent-text:#f0b98f;
+    --open:#5fd394;
+    --closed:#ff9c82;
+  }
+}
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
 html{-webkit-text-size-adjust:100%;}
 body{
-  font-family:"Archivo",system-ui,sans-serif;
-  background:var(--teal-deeper);
-  color:var(--ink);
-  min-height:100svh;
-  overflow-x:hidden;
-  line-height:1.45;
-  -webkit-font-smoothing:antialiased;
+  font-family:"Archivo",system-ui,-apple-system,"Segoe UI",sans-serif;
+  background:var(--bg);color:var(--ink);
+  min-height:100svh;line-height:1.45;-webkit-font-smoothing:antialiased;
 }
+a{color:inherit;}
+:focus-visible{outline:3px solid var(--focus);outline-offset:3px;border-radius:12px;}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}
+.skip{position:absolute;left:12px;top:-60px;background:var(--apricot);color:var(--apricot-ink);padding:10px 14px;border-radius:10px;font-weight:700;z-index:10;}
+.skip:focus{top:12px;}
 
-/* ── ANIMATED BACKGROUND ── */
-.bg{position:fixed;inset:0;z-index:-2;overflow:hidden;
-  background:radial-gradient(120% 90% at 50% -10%,#0b4a59 0%,var(--teal-deep) 42%,var(--teal-deeper) 100%);}
-.orb{position:absolute;border-radius:50%;filter:blur(60px);opacity:.55;mix-blend-mode:screen;
-  animation:drift 22s var(--ease) infinite alternate;}
-.orb.a{width:46vmax;height:46vmax;top:-18vmax;left:-12vmax;background:radial-gradient(circle,#0F7D96,transparent 70%);}
-.orb.b{width:38vmax;height:38vmax;bottom:-14vmax;right:-10vmax;background:radial-gradient(circle,#19c6e6,transparent 70%);animation-duration:28s;animation-delay:-6s;}
-.orb.c{width:30vmax;height:30vmax;top:40%;left:55%;background:radial-gradient(circle,#1f9bbd,transparent 70%);animation-duration:34s;animation-delay:-12s;opacity:.4;}
-@keyframes drift{
-  0%{transform:translate(0,0) scale(1);}
-  50%{transform:translate(4vmax,-3vmax) scale(1.12);}
-  100%{transform:translate(-3vmax,4vmax) scale(.95);}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 18px calc(40px + env(safe-area-inset-bottom));}
+
+/* ── Kopf ── */
+.top{position:relative;margin:0 -18px;color:#fff;background:var(--teal);overflow:hidden;
+  border-radius:0 0 28px 28px;padding:calc(26px + env(safe-area-inset-top)) 22px 30px;text-align:center;}
+.top::before{content:"";position:absolute;inset:0;background:url("hero.jpg") center 55%/cover;opacity:.28;}
+.top::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,73,88,.55),var(--teal) 92%);}
+.top > *{position:relative;z-index:1;}
+.logo{width:84px;height:84px;border-radius:50%;background:#fff;padding:5px;margin:0 auto 14px;
+  box-shadow:0 8px 24px -8px rgba(0,0,0,.45);display:block;}
+h1{font-size:clamp(27px,8vw,34px);font-weight:800;letter-spacing:-.8px;line-height:1.05;}
+.tag{margin-top:8px;font-size:15px;font-weight:500;color:#d6eaef;}
+
+/* ── Status ── */
+.status{margin-top:16px;display:inline-flex;align-items:center;gap:9px;background:rgba(255,255,255,.14);
+  border:1px solid rgba(255,255,255,.25);padding:8px 14px;border-radius:100px;font-size:14px;font-weight:600;}
+.status .dot{width:10px;height:10px;border-radius:50%;background:#9fb4ba;flex:none;}
+.status[data-state="open"] .dot{background:#5fd394;box-shadow:0 0 0 4px rgba(95,211,148,.28);}
+.status[data-state="closed"] .dot{background:#ff9c82;}
+
+/* ── Haupt-Aktion ── */
+.cta{display:flex;align-items:center;gap:14px;text-decoration:none;margin-top:20px;
+  background:var(--apricot);color:var(--apricot-ink);border-radius:var(--radius);padding:18px 18px;
+  box-shadow:0 14px 30px -14px rgba(224,140,83,.9);transition:transform .15s ease;}
+.cta:active{transform:scale(.98);}
+.cta .ic{width:46px;height:46px;border-radius:13px;background:rgba(42,20,5,.12);display:grid;place-items:center;flex:none;}
+.cta .ic svg{width:26px;height:26px;}
+.cta b{display:block;font-size:18px;font-weight:800;letter-spacing:-.2px;line-height:1.2;}
+.cta small{display:block;margin-top:2px;font-size:13.5px;font-weight:600;opacity:.82;}
+.cta .go{margin-left:auto;width:22px;height:22px;flex:none;}
+
+/* ── Schnellaktionen ── */
+.quick{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:12px;}
+.q{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;text-decoration:none;
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:15px 6px 13px;
+  font-weight:700;font-size:14.5px;min-height:84px;transition:transform .15s ease,border-color .15s ease;}
+.q:hover{border-color:var(--apricot);}
+.q:active{transform:scale(.97);}
+.q svg{width:26px;height:26px;color:var(--teal);}
+.q.wa svg{color:#1a8f4f;}
+@media (prefers-color-scheme:dark){.q svg{color:#8fd1e0;}.q.wa svg{color:#5fd394;}}
+
+/* ── Öffnungszeiten ── */
+details.hours{margin-top:12px;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);}
+details.hours summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:10px;padding:14px 16px;font-weight:700;font-size:15px;border-radius:var(--radius);}
+details.hours summary::-webkit-details-marker{display:none;}
+details.hours summary svg{width:20px;height:20px;color:var(--teal);flex:none;}
+details.hours summary .chev{margin-left:auto;width:18px;height:18px;transition:transform .2s ease;color:var(--muted);}
+details.hours[open] summary .chev{transform:rotate(180deg);}
+@media (prefers-color-scheme:dark){details.hours summary svg:first-child{color:#8fd1e0;}}
+.hours table{width:calc(100% - 32px);margin:0 16px 4px;border-collapse:collapse;font-size:14.5px;}
+.hours th{font-weight:600;text-align:left;padding:7px 0;color:var(--muted);}
+.hours td{text-align:right;padding:7px 0;font-weight:600;font-variant-numeric:tabular-nums;}
+.hours tr+tr{border-top:1px solid var(--line);}
+.hours tr.today th,.hours tr.today td{color:var(--accent-text);}
+.hours .note{margin:6px 16px 14px;font-size:12.5px;color:var(--muted);}
+.addr{display:flex;gap:8px;margin:0 16px 14px;font-size:13.5px;color:var(--muted);}
+
+/* ── Linkliste ── */
+.sec{margin:26px 4px 10px;font-size:12px;font-weight:800;letter-spacing:1.2px;text-transform:uppercase;color:var(--accent-text);}
+.links{display:flex;flex-direction:column;gap:10px;list-style:none;}
+.link{display:flex;align-items:center;gap:14px;text-decoration:none;background:var(--card);
+  border:1px solid var(--line);border-radius:var(--radius);padding:14px 16px;min-height:64px;
+  transition:transform .15s ease,border-color .15s ease;}
+.link:hover{border-color:var(--apricot);}
+.link:active{transform:scale(.985);}
+.link .ic{width:42px;height:42px;border-radius:12px;background:rgba(10,73,88,.08);display:grid;place-items:center;flex:none;}
+.link .ic svg{width:22px;height:22px;color:var(--teal);}
+@media (prefers-color-scheme:dark){.link .ic{background:rgba(255,255,255,.07);}.link .ic svg{color:#8fd1e0;}}
+.link b{display:block;font-size:16px;font-weight:700;letter-spacing:-.1px;}
+.link small{display:block;font-size:13px;color:var(--muted);font-weight:500;}
+.link .arr{margin-left:auto;width:18px;height:18px;color:var(--muted);flex:none;}
+
+/* ── Fakten ── */
+.facts{list-style:none;margin-top:26px;display:grid;gap:9px;background:var(--teal);color:#fff;border-radius:var(--radius);padding:18px;}
+.facts li{display:flex;align-items:flex-start;gap:11px;font-size:14.5px;font-weight:600;line-height:1.35;}
+.facts svg{width:22px;height:22px;flex:none;color:var(--apricot);margin-top:-1px;}
+
+/* ── Social ── */
+.socials{display:flex;justify-content:center;gap:10px;margin-top:24px;flex-wrap:wrap;}
+.soc{display:inline-flex;align-items:center;gap:9px;text-decoration:none;background:var(--card);
+  border:1px solid var(--line);border-radius:100px;padding:11px 18px;font-weight:700;font-size:14.5px;min-height:46px;}
+.soc:hover{border-color:var(--apricot);}
+.soc svg{width:20px;height:20px;}
+
+footer{text-align:center;margin-top:26px;color:var(--muted);font-size:13px;}
+footer a{color:var(--muted);padding:8px 6px;display:inline-block;}
+footer .copy{margin-top:2px;opacity:.85;}
+
+@media (min-width:700px){
+  body{background:var(--bg);}
+  .wrap{padding-top:28px;}
+  .top{margin:0;border-radius:28px;}
 }
-.grain{position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.045;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
-
-/* ── PARTICLES ── */
-.particles{position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden;}
-.p{position:absolute;border-radius:50%;background:var(--teal-bright);opacity:0;animation:float-up linear infinite;}
-@keyframes float-up{
-  0%{opacity:0;transform:translateY(0) scale(0);}
-  10%{opacity:.35;}
-  90%{opacity:.1;}
-  100%{opacity:0;transform:translateY(-100vh) scale(1);}
-}
-
-/* ── LAYOUT ── */
-.wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px calc(50px + env(safe-area-inset-bottom));}
-
-/* ── HERO ── */
-.hero{position:relative;margin:0 -22px;height:212px;overflow:hidden;border-radius:0 0 30px 30px;}
-.hero-img{width:100%;height:100%;object-fit:cover;object-position:center 58%;
-  transform:scale(1.04);animation:heroZoom 16s var(--ease) infinite alternate;}
-@keyframes heroZoom{to{transform:scale(1.13);}}
-.hero::after{content:"";position:absolute;inset:0;z-index:1;
-  background:
-    radial-gradient(115% 75% at 72% 2%,rgba(255,194,60,.20),transparent 55%),
-    linear-gradient(to bottom,rgba(4,24,29,.05) 0%,rgba(4,24,29,.32) 42%,rgba(4,24,29,.86) 82%,var(--teal-deeper) 100%);}
-.hero .brand{position:absolute;top:calc(15px + env(safe-area-inset-top));left:17px;z-index:2;
-  display:flex;align-items:center;gap:9px;}
-.hero .brand img{width:30px;height:30px;border-radius:9px;box-shadow:0 4px 14px rgba(0,0,0,.4);}
-.hero .brand b{font-family:"Bricolage Grotesque";font-weight:800;font-size:15px;
-  letter-spacing:-.3px;color:#fff;text-shadow:0 2px 12px rgba(0,0,0,.55);}
-
-/* ── HEADER ── */
-.head{text-align:center;position:relative;z-index:3;margin-top:-64px;}
-.avatar{
-  width:118px;height:118px;margin:0 auto 16px;border-radius:50%;position:relative;
-  display:grid;place-items:center;
-  background:radial-gradient(circle at 50% 38%,#ffffff,#d0f4fb);
-  box-shadow:0 0 0 4px var(--teal-deeper),0 0 0 5px rgba(255,255,255,.12),0 18px 50px -12px rgba(25,198,230,.65);
-}
-.avatar::after{content:"";position:absolute;inset:-9px;border-radius:50%;
-  background:conic-gradient(from 0deg,#19c6e6,#0F7D96,#FFC23C,#22c55e,#19c6e6);
-  z-index:-1;filter:blur(8px);opacity:.6;animation:spin 9s linear infinite;}
-@keyframes spin{to{transform:rotate(360deg);}}
-.avatar-img{
-  width:90%;height:90%;border-radius:50%;object-fit:cover;display:flex;
-  align-items:center;justify-content:center;font-size:42px;
-  background:linear-gradient(135deg,#19c6e6 0%,#0F7D96 100%);
-  color:#fff;font-weight:800;font-family:"Bricolage Grotesque";
-}
-
-h1{font-family:"Bricolage Grotesque";font-weight:800;font-size:clamp(26px,8vw,34px);
-  letter-spacing:-1.2px;line-height:1;display:flex;align-items:center;justify-content:center;gap:8px;}
-.verified{width:21px;height:21px;flex:none;color:#19c6e6;}
-.tag{margin-top:9px;color:var(--muted);font-size:15px;font-weight:500;}
-
-/* ── STATS ROW (social proof) ── */
-.stats{display:flex;justify-content:center;gap:0;margin-top:24px;
-  background:var(--glass);border:1px solid var(--stroke);border-radius:18px;
-  backdrop-filter:blur(12px);overflow:hidden;}
-.stat{flex:1;text-align:center;padding:14px 8px;position:relative;}
-.stat+.stat::before{content:"";position:absolute;left:0;top:20%;height:60%;
-  width:1px;background:var(--stroke);}
-.stat-num{font-family:"Bricolage Grotesque";font-weight:800;font-size:22px;
-  letter-spacing:-1px;background:linear-gradient(135deg,#19c6e6,#fff);
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
-  display:block;}
-.stat-lbl{font-size:11px;font-weight:600;color:var(--muted);margin-top:2px;display:block;letter-spacing:.3px;}
-
-/* ── PROMO RIBBON ── */
-.promo{margin:22px 0 16px;display:flex;align-items:center;gap:10px;justify-content:center;
-  font-size:13px;font-weight:600;color:var(--accent);
-  background:rgba(255,194,60,.08);border:1px solid rgba(255,194,60,.28);
-  padding:10px 14px;border-radius:14px;text-align:center;line-height:1.4;}
-.promo .dot{width:8px;height:8px;border-radius:50%;background:var(--accent);flex:none;
-  box-shadow:0 0 0 0 rgba(255,194,60,.6);animation:ping 1.8s ease-out infinite;}
-@keyframes ping{0%{box-shadow:0 0 0 0 rgba(255,194,60,.55);}70%,100%{box-shadow:0 0 0 9px rgba(255,194,60,0);}}
-
-/* ── PRIMARY CTA ── */
-.cta{
-  display:flex;align-items:center;gap:14px;text-decoration:none;color:#04181d;
-  background:linear-gradient(135deg,#22d3ee 0%,#0F7D96 90%);
-  border-radius:var(--radius);padding:20px 18px;position:relative;overflow:hidden;
-  box-shadow:0 16px 40px -10px rgba(25,198,230,.65),inset 0 1px 0 rgba(255,255,255,.4);
-  transition:transform .25s var(--ease),box-shadow .25s var(--ease);
-  animation:breathe 3.6s ease-in-out infinite;
-}
-@keyframes breathe{
-  0%,100%{box-shadow:0 16px 40px -10px rgba(25,198,230,.55),inset 0 1px 0 rgba(255,255,255,.4);}
-  50%{box-shadow:0 22px 56px -8px rgba(25,198,230,.9),inset 0 1px 0 rgba(255,255,255,.5);}}
-.cta:active{transform:scale(.975);}
-.cta .ic{width:48px;height:48px;flex:none;border-radius:13px;display:grid;place-items:center;
-  background:rgba(4,24,29,.14);}
-.cta .ic svg{width:26px;height:26px;color:#04181d;}
-.cta .txt{flex:1;min-width:0;}
-.cta .txt b{font-family:"Bricolage Grotesque";font-weight:800;font-size:18px;display:block;letter-spacing:-.3px;line-height:1.2;}
-.cta .txt small{font-size:12.5px;font-weight:600;opacity:.78;display:block;margin-top:3px;}
-.cta .badge{flex:none;align-self:center;font-size:10px;font-weight:800;letter-spacing:.7px;
-  background:rgba(4,24,29,.28);color:#04181d;padding:5px 10px;border-radius:100px;
-  text-transform:uppercase;white-space:nowrap;border:1.5px solid rgba(4,24,29,.18);}
-.cta .shine{position:absolute;top:0;left:-60%;width:50%;height:100%;
-  background:linear-gradient(100deg,transparent,rgba(255,255,255,.48),transparent);
-  transform:skewX(-18deg);animation:sweep 3.6s ease-in-out infinite;}
-@keyframes sweep{0%{left:-60%;}55%,100%{left:140%;}}
-
-/* ── SECTION LABEL ── */
-.section-lbl{font-size:11.5px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;
-  color:rgba(25,198,230,.6);margin:22px 0 10px 2px;}
-
-/* ── LINK BUTTONS ── */
-.links{display:flex;flex-direction:column;gap:11px;}
-.link{
-  display:flex;align-items:center;gap:14px;text-decoration:none;color:var(--ink);
-  background:var(--glass);border:1px solid var(--stroke);border-radius:var(--radius);
-  padding:15px 16px;position:relative;overflow:hidden;backdrop-filter:blur(10px);
-  transition:transform .25s var(--ease),background .25s var(--ease),border-color .25s var(--ease),box-shadow .25s var(--ease);
-}
-.link:hover{background:var(--glass-strong);border-color:rgba(25,198,230,.5);
-  transform:translateY(-2px);box-shadow:0 10px 30px -8px rgba(25,198,230,.3);}
-.link:active{transform:scale(.98);}
-.link .ic{width:44px;height:44px;flex:none;border-radius:12px;display:grid;place-items:center;
-  background:linear-gradient(135deg,rgba(25,198,230,.18),rgba(15,125,150,.18));
-  border:1px solid rgba(25,198,230,.22);}
-.link .ic svg{width:22px;height:22px;color:var(--teal-bright);}
-.link.whatsapp .ic{background:linear-gradient(135deg,rgba(34,197,94,.18),rgba(22,163,74,.18));
-  border-color:rgba(34,197,94,.3);}
-.link.whatsapp .ic svg{color:var(--green);}
-.link.whatsapp{border-color:rgba(34,197,94,.22);}
-.link.whatsapp:hover{border-color:rgba(34,197,94,.5);box-shadow:0 10px 30px -8px rgba(34,197,94,.3);}
-.link .txt{flex:1;}
-.link .txt b{font-family:"Bricolage Grotesque";font-weight:700;font-size:15.5px;display:block;letter-spacing:-.2px;}
-.link .txt small{font-size:12px;color:var(--muted);font-weight:500;}
-.link .arrow{width:18px;height:18px;color:var(--muted);flex:none;transition:transform .25s var(--ease),color .25s var(--ease);}
-.link:hover .arrow{transform:translateX(4px);color:var(--teal-bright);}
-.link.whatsapp:hover .arrow{color:var(--green);}
-
-/* ripple */
-.ripple{position:absolute;border-radius:50%;transform:scale(0);pointer-events:none;
-  background:rgba(255,255,255,.22);animation:rip .65s ease-out forwards;}
-@keyframes rip{to{transform:scale(3);opacity:0;}}
-
-/* ── TRUST BADGE ── */
-.trust{margin-top:22px;display:flex;align-items:center;gap:10px;
-  background:rgba(25,198,230,.06);border:1px solid rgba(25,198,230,.18);
-  padding:12px 16px;border-radius:16px;}
-.trust-icon{width:36px;height:36px;flex:none;border-radius:10px;display:grid;place-items:center;
-  background:rgba(25,198,230,.14);border:1px solid rgba(25,198,230,.22);}
-.trust-icon svg{width:20px;height:20px;color:var(--teal-bright);}
-.trust-txt{flex:1;font-size:13px;font-weight:600;line-height:1.4;}
-.trust-txt span{display:block;font-size:11.5px;font-weight:500;color:var(--muted);margin-top:2px;}
-
-/* ── SOCIALS ── */
-.socials{display:flex;justify-content:center;gap:12px;margin-top:28px;}
-.soc{width:50px;height:50px;border-radius:14px;display:grid;place-items:center;
-  background:var(--glass);border:1px solid var(--stroke);color:var(--ink);text-decoration:none;
-  backdrop-filter:blur(8px);transition:transform .2s var(--ease),background .2s var(--ease),border-color .2s var(--ease),box-shadow .2s var(--ease);}
-.soc:hover{transform:translateY(-4px) rotate(-4deg);background:var(--teal);border-color:var(--teal);
-  box-shadow:0 12px 28px -6px rgba(25,198,230,.5);}
-.soc svg{width:22px;height:22px;}
-
-/* ── FOOTER ── */
-footer{text-align:center;margin-top:32px;color:var(--muted);font-size:12px;}
-footer a{color:var(--muted);text-decoration:none;}
-footer a:hover{color:var(--teal-bright);}
-footer .sep{margin:0 7px;opacity:.5;}
-footer .copy{margin-top:8px;opacity:.55;}
-
-/* ── ENTRANCE ANIMATIONS ── */
-.reveal{opacity:0;transform:translateY(18px);animation:rise .7s var(--ease) forwards;}
-@keyframes rise{to{opacity:1;transform:none;}}
-
-/* ── CURSOR SPOTLIGHT (inside .bg layer) ── */
-#spotlight{position:absolute;inset:0;pointer-events:none;
-  background:radial-gradient(500px at var(--sx,-999px) var(--sy,-999px),rgba(25,198,230,.11),transparent 72%);}
-
-/* ── CARD SHIMMER SWEEP ── */
-.link::after{content:'';position:absolute;top:0;left:0;width:100%;height:100%;border-radius:inherit;
-  pointer-events:none;
-  background:linear-gradient(105deg,transparent 28%,rgba(255,255,255,.11) 50%,transparent 72%);
-  transform:translateX(-110%);transition:transform 0s;}
-.link:hover::after{transform:translateX(210%);transition:transform .55s ease;}
-
-/* ── TYPEWRITER CURSOR ── */
-.tw-cursor{display:inline-block;width:2px;height:.82em;background:rgba(25,198,230,.8);
-  margin-left:1px;vertical-align:text-bottom;animation:blink .72s ease-in-out infinite;}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
-
-/* ── STAT POP ── */
-@keyframes statPop{
-  0%{transform:scale(.5) translateY(6px);opacity:0}
-  65%{transform:scale(1.18)}
-  100%{transform:scale(1);opacity:1}
-}
-
-@media(prefers-reduced-motion:reduce){
-  *{animation:none!important;transition:none!important;}
-  .reveal{opacity:1;transform:none;}
-}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;}}
 </style>
 </head>
 <body>
-<div class="bg">
-  <div id="spotlight"></div>
-  <div class="orb a"></div><div class="orb b"></div><div class="orb c"></div>
-</div>
-<div class="grain"></div>
-<div class="particles" id="particles"></div>
+<a class="skip" href="#links">Zu den Links springen</a>
 
-<div class="wrap">
+<main class="wrap">
 
-  <!-- HERO -->
-  <div class="hero reveal" style="animation-delay:.03s">
-    <img class="hero-img" src="hero.jpg" alt="Fit-Inn Trier Studio in Trier" />
-    <div class="brand">
-      <img src="logo.png" alt="" />
-      <b id="brandName">Fit-Inn Trier</b>
-    </div>
-  </div>
-
-  <!-- HEADER -->
-  <header class="head reveal" style="animation-delay:.12s">
-    <div class="avatar">
-      <div class="avatar-img" id="avatarInitials">FIT</div>
-    </div>
-    <h1 id="siteName">Fit-Inn Trier
-      <svg class="verified" viewBox="0 0 24 24" fill="currentColor"><path d="M9 12l2 2 4-4M20.618 5.984A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
-    </h1>
-    <p class="tag" id="siteTagline">Fitnessstudio &amp; Ernährungs-/Stoffwechsel-Coaching</p>
-
-    <!-- Stats / Social Proof -->
-    <div class="stats reveal" style="animation-delay:.16s" id="statsRow">
-      <div class="stat"><span class="stat-num" id="stat1num">100%</span><span class="stat-lbl">Familiengeführt</span></div>
-      <div class="stat"><span class="stat-num" id="stat2num">4,7 ★</span><span class="stat-lbl">Google-Bewertung</span></div>
-      <div class="stat"><span class="stat-num" id="stat3num">30+</span><span class="stat-lbl">Jahre Erfahrung</span></div>
+  <header class="top">
+    <img class="logo" src="logo.png" alt="Fit-Inn Trier Logo" width="84" height="84" />
+    <h1>Fit-Inn Trier</h1>
+    <p class="tag">Fitnessstudio in Trier · familiengeführt seit 1996</p>
+    <div class="status" id="status" data-state="unknown" role="status" aria-live="polite">
+      <span class="dot" aria-hidden="true"></span><span id="statusText">Öffnungszeiten ansehen</span>
     </div>
   </header>
 
-  <!-- PROMO RIBBON -->
-  <div class="promo reveal" id="promo" style="animation-delay:.22s">
-    <span class="dot"></span>
-    <span id="promoText">🔥 Kostenloses Erstgespräch sichern – begrenzte Plätze!</span>
-  </div>
-
-  <!-- PRIMARY CTA -->
-  <a class="cta reveal" id="primaryCta" href="#" target="_blank" rel="noopener" data-track="erstgespraech" style="animation-delay:.30s">
-    <span class="ic">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="4" width="18" height="18" rx="3"/><path d="M16 2v4M8 2v4M3 10h18" stroke-linecap="round"/></svg>
-    </span>
-    <span class="txt">
-      <b>Kostenloses Erstgespräch buchen</b>
-      <small>In 2 Minuten Termin sichern →</small>
-    </span>
-    <span class="badge">KOSTENLOS</span>
-    <span class="shine" aria-hidden="true"></span>
+  <!-- Hauptaktion -->
+  <a class="cta" href="https://fit-inn-trier.de/probetraining" target="_blank" rel="noopener" data-track="erstgespraech">
+    <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="4" width="18" height="18" rx="3"/><path d="M16 2v4M8 2v4M3 10h18" stroke-linecap="round"/></svg></span>
+    <span><b>Kostenloses Probetraining buchen</b><small>In 2 Minuten Termin sichern</small></span>
+    <svg class="go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" aria-hidden="true"><path d="M9 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
   </a>
 
-  <!-- FURTHER LINKS -->
-  <p class="section-lbl reveal" style="animation-delay:.36s">Angebote &amp; Kontakt</p>
-  <div class="links" id="links"></div>
+  <!-- Schnellaktionen -->
+  <nav class="quick" aria-label="Schnellkontakt">
+    <a class="q wa" href="https://wa.me/4951328533010?text=Hallo%20Fit-Inn%2C%20ich%20habe%20eine%20Frage" target="_blank" rel="noopener" data-track="whatsapp">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.978-1.355A9.963 9.963 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 18a7.965 7.965 0 01-4.074-1.116l-.292-.174-2.956.805.791-2.885-.192-.3A7.952 7.952 0 014 12c0-4.418 3.582-8 8-8s8 3.582 8 8-3.582 8-8 8z"/></svg>
+      WhatsApp
+    </a>
+    <a class="q" href="tel:+4965160344205" data-track="anrufen">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 4h3l2 5-2.5 1.5a11 11 0 005 5L14 13l5 2v3a2 2 0 01-2.2 2A16 16 0 013 7.2 2 2 0 015 4z" stroke-linejoin="round"/></svg>
+      Anrufen
+    </a>
+    <a class="q" href="https://share.google/XXbpND2zvy5KVzfIi" target="_blank" rel="noopener" data-track="maps">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s7-6 7-12a7 7 0 10-14 0c0 6 7 12 7 12z" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.5"/></svg>
+      Route
+    </a>
+  </nav>
 
-  <!-- TRUST BADGE -->
-  <div class="trust reveal" id="trustBadge" style="animation-delay:.7s">
-    <div class="trust-icon">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s-7-5.6-7-11a7 7 0 0114 0c0 5.4-7 11-7 11z" stroke-linejoin="round"/><circle cx="12" cy="11" r="2.5"/></svg>
-    </div>
-    <div class="trust-txt">Dein Gesundheitsanbieter in Trier
-      <span>Persönliche Betreuung · über 100 Geräte · Stoffwechsel-Coaching</span>
-    </div>
+  <!-- Öffnungszeiten -->
+  <details class="hours" id="hours">
+    <summary>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Öffnungszeiten &amp; Adresse
+      <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </summary>
+    <table>
+      <caption class="sr">Öffnungszeiten</caption>
+      <tbody id="hoursBody"></tbody>
+    </table>
+    <p class="note">An Feiertagen können die Zeiten abweichen.</p>
+    <p class="addr">Auf Hirtenberg 8, 54296 Trier</p>
+  </details>
+
+  <h2 class="sec" id="links">Mehr von Fit-Inn</h2>
+  <ul class="links">
+    <li><a class="link" href="https://fit-inn-trier.de/stoffwechsel-coaching" target="_blank" rel="noopener" data-track="stoffwechsel">
+      <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20s-7-4.5-7-10a4 4 0 017-2.6A4 4 0 0119 10c0 5.5-7 10-7 10z" stroke-linejoin="round"/></svg></span>
+      <span><b>Stoffwechsel-Coaching</b><small>Atemgasanalyse · Ernährung &amp; Training</small></span>
+      <svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M9 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a></li>
+    <li><a class="link" href="https://fit-inn-trier.de" target="_blank" rel="noopener" data-track="website">
+      <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 2.5 15 0 18M12 3c-2.5 2.5-2.5 15 0 18" stroke-linecap="round"/></svg></span>
+      <span><b>Unsere Website</b><small>Alles über Fit-Inn auf einen Blick</small></span>
+      <svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M9 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a></li>
+    <li><a class="link" href="https://fit-inn-trier.de/blog" target="_blank" rel="noopener" data-track="blog">
+      <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20" stroke-linecap="round"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z" stroke-linejoin="round"/><path d="M9 7h6M9 11h4" stroke-linecap="round"/></svg></span>
+      <span><b>Sport-Blog</b><small>Tipps zu Training, Ernährung &amp; Gesundheit</small></span>
+      <svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M9 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a></li>
+    <li><a class="link" href="https://fit-inn-trier.de/kontakt" target="_blank" rel="noopener" data-track="kontakt">
+      <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 5h16v11H8l-4 4V5z" stroke-linejoin="round"/></svg></span>
+      <span><b>Kontakt</b><small>Nachricht an das Team schreiben</small></span>
+      <svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M9 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a></li>
+    <li><a class="link" href="https://www.figurscout-coach.de/studio/fit-inn-trier/tools/shop" target="_blank" rel="noopener" data-track="shop">
+      <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 7h12l-1 13H7L6 7z"/><path d="M9 7a3 3 0 016 0" stroke-linecap="round"/></svg></span>
+      <span><b>Online-Shop</b><small>Zum Shop von Fit-Inn Trier</small></span>
+      <svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M9 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a></li>
+  </ul>
+
+  <!-- Fakten (alle belegt) -->
+  <ul class="facts" aria-label="Das ist Fit-Inn">
+    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg>30 Jahre familiengeführt – seit 1996</li>
+    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Über 250 positive Bewertungen</li>
+    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Gerätetraining mit persönlicher Betreuung</li>
+    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Neumitgliedschaft ab 18 Jahren</li>
+  </ul>
+
+  <div class="socials">
+    <a class="soc" href="https://www.instagram.com/fit_inn_trier/" target="_blank" rel="noopener" data-track="social_instagram">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.85.07 3.25.15 4.77 1.69 4.92 4.92.07 1.25.07 1.65.07 4.85s0 3.6-.07 4.85c-.15 3.23-1.66 4.77-4.92 4.92-1.25.07-1.65.07-4.85.07s-3.6 0-4.85-.07c-3.26-.15-4.77-1.7-4.92-4.92C2.2 15.6 2.2 15.2 2.2 12s0-3.6.07-4.85C2.42 3.92 3.94 2.38 7.15 2.27 8.4 2.2 8.8 2.2 12 2.2zm0 4.86A4.94 4.94 0 1012 17a4.94 4.94 0 000-9.88zm0 8.15A3.2 3.2 0 1112 8.8a3.2 3.2 0 010 6.4zm5.13-8.4a1.15 1.15 0 11-1.15-1.15 1.15 1.15 0 011.15 1.15z"/></svg>
+      Instagram
+    </a>
+    <a class="soc" href="https://www.facebook.com/FitInnFeyen" target="_blank" rel="noopener" data-track="social_facebook">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22 12a10 10 0 10-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.78-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.99A10 10 0 0022 12z"/></svg>
+      Facebook
+    </a>
   </div>
 
-  <!-- SOCIALS -->
-  <div class="socials reveal" id="socials" style="animation-delay:.74s"></div>
-
-  <footer class="reveal" style="animation-delay:.80s">
-    <div>
-      <a href="#" id="footerImpressum">Impressum</a>
-      <span class="sep">·</span>
-      <a href="#" id="footerDatenschutz">Datenschutz</a>
-    </div>
-    <div class="copy">© <span id="year"></span> <span id="footerName">Fit-Inn Trier</span></div>
+  <footer>
+    <a href="https://fit-inn-trier.de/impressum-fit-inn-trier" target="_blank" rel="noopener">Impressum</a>
+    <a href="https://fit-inn-trier.de/datenschutz-fit-inn-trier" target="_blank" rel="noopener">Datenschutz</a>
+    <div class="copy">© <span id="year">2026</span> Fit-Inn Trier</div>
   </footer>
-</div>
+</main>
 
 <script>
-/* =====================================================================
-   👉 HIER ANPASSEN – alles zwischen den ===-Zeichen
-   ===================================================================== */
-const CONFIG = {
-  name:      "Fit-Inn Trier",
-  initials:  "FIT",
-  avatar:    "logo.png",          // Avatar-Foto/-Logo – leer lassen ("") für Initialen
-  tagline:   "Dein Premium Fitnessstudio in Trier – seit 1996",
-  instagram: "@fit_inn_trier",
-
-  stats:[
-    { num:"100%",  lbl:"Familiengeführt" },
-    { num:"4,7 ★", lbl:"Google-Bewertung" },
-    { num:"30+",   lbl:"Jahre Erfahrung" },
-  ],
-
-  promo: { show:true, text:"🔥 Probetraining sichern – jetzt kostenlos testen!" },
-
-  primaryCta: {
-    url:   "https://fit-inn-trier.de/probetraining",
-    label: "Kostenloses Probetraining buchen",
-    sub:   "In 2 Minuten Termin sichern →",
-    badge: "KOSTENLOS",
-  },
-
-  links:[
-    {
-      icon:"heart", cls:"",
-      title:"Stoffwechsel-Coaching",
-      sub:"Atemgasanalyse · individuelle Ernährungs- & Trainingspläne",
-      url:"https://fit-inn-trier.de/stoffwechsel-coaching",
-      track:"stoffwechsel",
-    },
-    {
-      icon:"whatsapp", cls:"whatsapp",
-      title:"WhatsApp – schreib uns",
-      sub:"Fragen zu Probetraining & Preisen – direkt im Chat",
-      url:"https://wa.me/4951328533010?text=Hallo%20Fit-Inn%2C%20ich%20habe%20eine%20Frage",        // WhatsApp-Bot (seit 07.10.2026); vorher wa.me/49651308524 (alte Studionummer)
-      track:"whatsapp",
-    },
-    {
-      icon:"phone", cls:"",
-      title:"Anrufen",
-      sub:"0651 603 442 05 · Mo–Fr 9:30–21:30",
-      url:"tel:+4965160344205",               // Telefon (Festnetz): 0651 603 442 05
-      track:"anrufen",
-    },
-    {
-      icon:"web", cls:"",
-      title:"Unsere Website",
-      sub:"Alles über unser Angebot auf einen Blick",
-      url:"https://fit-inn-trier.de",
-      track:"website",
-    },
-    {
-      icon:"book", cls:"",
-      title:"Sport-Blog",
-      sub:"Tipps zu Training, Ernährung & Gesundheit",
-      url:"https://fit-inn-trier.de/blog",
-      track:"blog",
-    },
-    {
-      icon:"chat", cls:"",
-      title:"Kontakt",
-      sub:"Fragen? Schreib uns – wir melden uns schnell",
-      url:"https://fit-inn-trier.de/kontakt",
-      track:"kontakt",
-    },
-    {
-      icon:"bag", cls:"",
-      title:"Online-Shop",
-      sub:"Supplements & Coaching-Pakete",
-      url:"https://www.figurscout-coach.de/studio/fit-inn-trier/tools/shop",
-      track:"shop",
-    },
-    {
-      icon:"pin", cls:"",
-      title:"Anfahrt & Öffnungszeiten",
-      sub:"Auf Hirtenberg 8, 54296 Trier",
-      url:"https://share.google/XXbpND2zvy5KVzfIi",
-      track:"maps",
-    },
-  ],
-
-  socials:[
-    { net:"instagram", url:"https://www.instagram.com/fit_inn_trier/" },
-    { net:"facebook",  url:"https://www.facebook.com/FitInnFeyen" },
-  ],
-
-  impressum:   "https://fit-inn-trier.de/impressum-fit-inn-trier",
-  datenschutz: "https://fit-inn-trier.de/datenschutz-fit-inn-trier",
+/* Öffnungszeiten laut Studio-Konfiguration (Dashboard). 0 = Sonntag. */
+const HOURS = {
+  1:[["09:30","13:00"],["15:00","21:30"]],
+  2:[["09:30","13:00"],["15:00","21:30"]],
+  3:[["09:30","13:00"],["15:00","21:30"]],
+  4:[["09:30","13:00"],["15:00","21:30"]],
+  5:[["09:30","13:00"],["15:00","21:30"]],
+  6:[["13:00","18:00"]],
+  0:[["09:00","15:00"]],
 };
-/* ===================== Ab hier nichts mehr ändern ===================== */
+const DAYS = ["Sonntag","Montag","Dienstag","Mittwoch","Donnerstag","Freitag","Samstag"];
+const ORDER = [1,2,3,4,5,6,0];
+const mins = t => { const [h,m]=t.split(":").map(Number); return h*60+m; };
+const fmt = t => t.replace(/^0/,"");
 
-const ICONS = {
-  web:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 2.5 15 0 18M12 3c-2.5 2.5-2.5 15 0 18" stroke-linecap="round"/></svg>`,
-  bag:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 7h12l-1 13H7L6 7z"/><path d="M9 7a3 3 0 016 0" stroke-linecap="round"/></svg>`,
-  whatsapp:`<svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.978-1.355A9.963 9.963 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 18a7.965 7.965 0 01-4.074-1.116l-.292-.174-2.956.805.791-2.885-.192-.3A7.952 7.952 0 014 12c0-4.418 3.582-8 8-8s8 3.582 8 8-3.582 8-8 8z"/></svg>`,
-  pin:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s7-6 7-12a7 7 0 10-14 0c0 6 7 12 7 12z" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.5"/></svg>`,
-  phone:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 4h3l2 5-2.5 1.5a11 11 0 005 5L14 13l5 2v3a2 2 0 01-2.2 2A16 16 0 013 7.2 2 2 0 015 4z" stroke-linejoin="round"/></svg>`,
-  heart:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20s-7-4.5-7-10a4 4 0 017-2.6A4 4 0 0119 10c0 5.5-7 10-7 10z" stroke-linejoin="round"/></svg>`,
-  chat:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 5h16v11H8l-4 4V5z" stroke-linejoin="round"/></svg>`,
-  book:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20" stroke-linecap="round"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z" stroke-linejoin="round"/><path d="M9 7h6M9 11h4" stroke-linecap="round"/></svg>`,
-};
-const SOCIAL_ICONS = {
-  instagram:`<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.2c3.2 0 3.6 0 4.85.07 3.25.15 4.77 1.69 4.92 4.92.07 1.25.07 1.65.07 4.85s0 3.6-.07 4.85c-.15 3.23-1.66 4.77-4.92 4.92-1.25.07-1.65.07-4.85.07s-3.6 0-4.85-.07c-3.26-.15-4.77-1.7-4.92-4.92C2.2 15.6 2.2 15.2 2.2 12s0-3.6.07-4.85C2.42 3.92 3.94 2.38 7.15 2.27 8.4 2.2 8.8 2.2 12 2.2zm0 4.86A4.94 4.94 0 1012 17a4.94 4.94 0 000-9.88zm0 8.15A3.2 3.2 0 1112 8.8a3.2 3.2 0 010 6.4zm5.13-8.4a1.15 1.15 0 11-1.15-1.15 1.15 1.15 0 011.15 1.15z"/></svg>`,
-  facebook:`<svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 10-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.78-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.99A10 10 0 0022 12z"/></svg>`,
-  tiktok:`<svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.6 5.8a4.3 4.3 0 01-2.6-3.8h-3v13.4a2.5 2.5 0 11-2.5-2.5c.26 0 .5.04.74.1V7.9a5.7 5.7 0 00-.74-.05A5.55 5.55 0 1013.1 13.4V8.3a7.3 7.3 0 004.3 1.4V6.6a4.3 4.3 0 01-.8-.8z"/></svg>`,
-  youtube:`<svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 12s0-3.2-.4-4.7a2.5 2.5 0 00-1.8-1.8C19.3 5 12 5 12 5s-7.3 0-8.8.5A2.5 2.5 0 001.4 7.3C1 8.8 1 12 1 12s0 3.2.4 4.7a2.5 2.5 0 001.8 1.8C4.7 19 12 19 12 19s7.3 0 8.8-.5a2.5 2.5 0 001.8-1.8C23 15.2 23 12 23 12zM9.8 15.3V8.7l5.7 3.3-5.7 3.3z"/></svg>`,
-};
-const ARROW_SVG = `<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M9 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
-
-// Apply CONFIG
-document.getElementById('siteName').childNodes[0].textContent = CONFIG.name+' ';
-document.getElementById('siteTagline').textContent = CONFIG.tagline;
-const brandEl = document.getElementById('brandName'); if(brandEl) brandEl.textContent = CONFIG.name;
-
-// Avatar: Logo-Bild falls gesetzt, sonst Initialen
-if(CONFIG.avatar){
-  const img=document.createElement('img');
-  img.src=CONFIG.avatar; img.alt=CONFIG.name; img.className='avatar-img';
-  if(CONFIG.avatar.match(/\.(png|svg)$/i)){
-    img.style.objectFit='contain';img.style.background='transparent';img.style.padding='10px';
-  }
-  document.getElementById('avatarInitials').replaceWith(img);
-}else{
-  document.getElementById('avatarInitials').textContent = CONFIG.initials;
+function berlinNow(){
+  const parts = new Intl.DateTimeFormat("en-GB",{timeZone:"Europe/Berlin",weekday:"short",hour:"2-digit",minute:"2-digit",hour12:false}).formatToParts(new Date());
+  const get = type => parts.find(p=>p.type===type).value;
+  const wd = {Sun:0,Mon:1,Tue:2,Wed:3,Thu:4,Fri:5,Sat:6}[get("weekday")];
+  return { wd, min: Number(get("hour"))%24*60 + Number(get("minute")) };
 }
-document.getElementById('footerName').textContent = CONFIG.name;
-document.getElementById('footerImpressum').href = CONFIG.impressum;
-document.getElementById('footerDatenschutz').href = CONFIG.datenschutz;
-document.getElementById('year').textContent = new Date().getFullYear();
 
-// Stats
-const statEls = document.querySelectorAll('.stat');
-CONFIG.stats.forEach((s,i)=>{
-  if(statEls[i]){
-    statEls[i].querySelector('.stat-num').textContent = s.num;
-    statEls[i].querySelector('.stat-lbl').textContent = s.lbl;
-  }
-});
-
-// Promo
-if(!CONFIG.promo.show) document.getElementById('promo').style.display='none';
-else document.getElementById('promoText').textContent = CONFIG.promo.text;
-
-// Primary CTA
-const ctaEl = document.getElementById('primaryCta');
-ctaEl.href = CONFIG.primaryCta.url;
-ctaEl.querySelector('b').textContent = CONFIG.primaryCta.label;
-ctaEl.querySelector('small').textContent = CONFIG.primaryCta.sub;
-ctaEl.querySelector('.badge').textContent = CONFIG.primaryCta.badge;
-
-// Links
-const linksEl = document.getElementById('links');
-CONFIG.links.forEach((l,i)=>{
-  const a = document.createElement('a');
-  a.className = 'link reveal' + (l.cls ? ' '+l.cls : '');
-  a.href = l.url; a.target='_blank'; a.rel='noopener';
-  a.style.animationDelay = (0.40 + i*0.07)+'s';
-  a.dataset.track = l.track||'';
-  a.innerHTML = `<span class="ic">${ICONS[l.icon]||ICONS.web}</span>
-    <span class="txt"><b>${l.title}</b><small>${l.sub||''}</small></span>
-    ${ARROW_SVG}`;
-  linksEl.appendChild(a);
-});
-
-// Socials
-const socEl = document.getElementById('socials');
-CONFIG.socials.forEach(s=>{
-  const a = document.createElement('a');
-  a.className='soc'; a.href=s.url; a.target='_blank'; a.rel='noopener';
-  a.setAttribute('aria-label', s.net);
-  a.dataset.track = 'social_'+s.net;
-  a.innerHTML = SOCIAL_ICONS[s.net]||'';
-  socEl.appendChild(a);
-});
-
-// Particles
-(function(){
-  const c = document.getElementById('particles');
-  for(let i=0;i<18;i++){
-    const p=document.createElement('div');
-    p.className='p';
-    const size = 2+Math.random()*4;
-    p.style.cssText=`width:${size}px;height:${size}px;left:${Math.random()*100}%;
-      animation-duration:${8+Math.random()*14}s;
-      animation-delay:${-Math.random()*20}s;
-      opacity:${0.1+Math.random()*.25}`;
-    c.appendChild(p);
-  }
-})();
-
-// Real stats counter (numbers count up on reveal)
-(function(){
-  function countUp(el,end,suffix,dur){
-    const isFloat=end!==Math.floor(end);
-    const t0=performance.now();
-    el.style.animation='statPop .65s var(--ease) both';
-    const step=t=>{
-      const p=Math.min((t-t0)/dur,1);
-      const v=(1-Math.pow(1-p,4))*end;
-      el.textContent=(isFloat?v.toFixed(1).replace('.',','):Math.round(v))+suffix;
-      if(p<1)requestAnimationFrame(step);
-    };
-    requestAnimationFrame(step);
-  }
-  function parseStat(s){const m=s.match(/^([\d,.]+)(.*)$/);return m?{v:parseFloat(m[1].replace(',','.')),s:m[2]}:{v:0,s:s};}
-  const els=document.querySelectorAll('.stat-num');
-  const obs=new IntersectionObserver(entries=>{
-    entries.forEach(e=>{
-      if(!e.isIntersecting)return;
-      CONFIG.stats.forEach((st,i)=>{if(els[i]){const{v,s}=parseStat(st.num);if(v>0)countUp(els[i],v,s,1100+i*180);}});
-      obs.unobserve(e.target);
-    });
-  },{threshold:.5});
-  const sr=document.getElementById('statsRow');if(sr)obs.observe(sr);
-})();
-
-// Ripple + Tracking
-document.addEventListener('pointerdown',e=>{
-  const t=e.target.closest('.link,.cta');
-  if(!t)return;
-  const r=t.getBoundingClientRect();
-  const d=Math.max(r.width,r.height);
-  const rip=document.createElement('span');
-  rip.className='ripple';
-  rip.style.width=rip.style.height=d+'px';
-  rip.style.left=(e.clientX-r.left-d/2)+'px';
-  rip.style.top=(e.clientY-r.top-d/2)+'px';
-  t.appendChild(rip);
-  setTimeout(()=>rip.remove(),700);
-});
-document.addEventListener('click',e=>{
-  const t=e.target.closest('[data-track]');
-  if(!t)return;
-  const n=t.dataset.track;
-  // GA4:  window.gtag && gtag('event','link_click',{link:n});
-  // Meta: window.fbq && fbq('trackCustom','LinkClick',{link:n});
-  console.log('[track]',n);
-});
-
-// ── WOW EFFECTS ────────────────────────────────────────────────
-
-// Cursor spotlight: illuminates background behind cursor (desktop only)
-(function(){
-  const sp=document.getElementById('spotlight');
-  if(!sp||!window.matchMedia('(pointer:fine)').matches)return;
-  window.addEventListener('mousemove',e=>{
-    sp.style.setProperty('--sx',e.clientX+'px');
-    sp.style.setProperty('--sy',e.clientY+'px');
-  },{passive:true});
-})();
-
-// 3D perspective tilt on link cards (desktop only)
-(function(){
-  if(!window.matchMedia('(pointer:fine)').matches)return;
-  document.querySelectorAll('.link').forEach(card=>{
-    card.addEventListener('mousemove',e=>{
-      const r=card.getBoundingClientRect();
-      const x=((e.clientX-r.left)/r.width-.5)*12;
-      const y=((e.clientY-r.top)/r.height-.5)*-7;
-      card.style.transform=`perspective(700px) rotateY(${x}deg) rotateX(${y}deg) translateY(-2px)`;
-      card.style.transition='transform .09s linear';
-    });
-    card.addEventListener('mouseleave',()=>{
-      card.style.transform='';
-      card.style.transition='';
-    });
+function renderTable(today){
+  const tb = document.getElementById("hoursBody");
+  ORDER.forEach(d=>{
+    const tr = document.createElement("tr");
+    if(d===today) tr.className="today";
+    const th = document.createElement("th"); th.scope="row"; th.textContent = DAYS[d];
+    const td = document.createElement("td");
+    td.textContent = HOURS[d].map(s=>fmt(s[0])+"–"+fmt(s[1])).join(" · ")+" Uhr";
+    tr.append(th,td); tb.appendChild(tr);
   });
-})();
+}
 
-// Typewriter animation for tagline (types out after header fades in)
-(function(){
-  const el=document.getElementById('siteTagline');
-  if(!el)return;
-  const text=CONFIG.tagline;
-  el.textContent='';
-  const cur=document.createElement('span');cur.className='tw-cursor';el.appendChild(cur);
-  let i=0;
-  const type=()=>{
-    if(i<text.length){cur.insertAdjacentText('beforebegin',text[i++]);setTimeout(type,28+Math.random()*26);}
-    else setTimeout(()=>cur.style.display='none',1000);
-  };
-  setTimeout(type,850);
-})();
+function renderStatus(){
+  const {wd,min} = berlinNow();
+  const el = document.getElementById("status"), tx = document.getElementById("statusText");
+  const slots = HOURS[wd]||[];
+  const cur = slots.find(s=>min>=mins(s[0]) && min<mins(s[1]));
+  if(cur){
+    el.dataset.state="open"; tx.textContent="Jetzt geöffnet · bis "+fmt(cur[1])+" Uhr"; return;
+  }
+  const next = slots.find(s=>min<mins(s[0]));
+  el.dataset.state="closed";
+  if(next){ tx.textContent="Geschlossen · öffnet heute um "+fmt(next[0])+" Uhr"; return; }
+  for(let i=1;i<=7;i++){
+    const d=(wd+i)%7, s=HOURS[d]&&HOURS[d][0];
+    if(s){ tx.textContent="Geschlossen · öffnet "+(i===1?"morgen":DAYS[d])+" um "+fmt(s[0])+" Uhr"; return; }
+  }
+}
 
-// Hero parallax: image shifts slightly on scroll for depth
-(function(){
-  const img=document.querySelector('.hero-img');
-  if(!img)return;
-  let raf=false;
-  window.addEventListener('scroll',()=>{
-    if(!raf){raf=true;requestAnimationFrame(()=>{
-      img.style.transform=`scale(1.08) translateY(${Math.max(0,window.scrollY)*.2}px)`;
-      raf=false;
-    });}
-  },{passive:true});
-})();
-
-// Magnetic pull on social icons (desktop only)
-(function(){
-  if(!window.matchMedia('(pointer:fine)').matches)return;
-  document.querySelectorAll('.soc').forEach(ic=>{
-    ic.addEventListener('mousemove',e=>{
-      const r=ic.getBoundingClientRect();
-      ic.style.transform=`translateY(-4px) rotate(-4deg) translate(${(e.clientX-r.left-r.width/2)*.35}px,${(e.clientY-r.top-r.height/2)*.35}px)`;
-    });
-    ic.addEventListener('mouseleave',()=>{ic.style.transform='';});
-  });
-})();
+renderTable(berlinNow().wd);
+renderStatus();
+setInterval(renderStatus,60000);
+document.getElementById("year").textContent = new Date().getFullYear();
 </script>
 </body>
 </html>
