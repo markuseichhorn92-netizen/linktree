@@ -92,15 +92,14 @@ h1{font-size:clamp(27px,8vw,34px);font-weight:800;letter-spacing:-.8px;line-heig
 .cta .go{margin-left:auto;width:22px;height:22px;flex:none;}
 
 /* ── Schnellaktionen ── */
-.quick{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:12px;}
+.quick{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:12px;}
 .q{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;text-decoration:none;
   background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:15px 6px 13px;
   font-weight:700;font-size:14.5px;min-height:84px;transition:transform .15s ease,border-color .15s ease;}
 .q:hover{border-color:var(--apricot);}
 .q:active{transform:scale(.97);}
 .q svg{width:26px;height:26px;color:var(--teal);}
-.q.wa svg{color:#1a8f4f;}
-@media (prefers-color-scheme:dark){.q svg{color:#8fd1e0;}.q.wa svg{color:#5fd394;}}
+@media (prefers-color-scheme:dark){.q svg{color:#8fd1e0;}}
 
 /* ── Öffnungszeiten ── */
 details.hours{margin-top:12px;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);}
@@ -180,10 +179,6 @@ footer .copy{margin-top:2px;opacity:.85;}
 
   <!-- Schnellaktionen -->
   <nav class="quick" aria-label="Schnellkontakt">
-    <a class="q wa" href="https://wa.me/4951328533010?text=Hallo%20Fit-Inn%2C%20ich%20habe%20eine%20Frage" target="_blank" rel="noopener" data-track="whatsapp">
-      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.978-1.355A9.963 9.963 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 18a7.965 7.965 0 01-4.074-1.116l-.292-.174-2.956.805.791-2.885-.192-.3A7.952 7.952 0 014 12c0-4.418 3.582-8 8-8s8 3.582 8 8-3.582 8-8 8z"/></svg>
-      WhatsApp
-    </a>
     <a class="q" href="tel:+4965160344342" data-track="anrufen" aria-label="Anrufen: 0651 603 443 42">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 4h3l2 5-2.5 1.5a11 11 0 005 5L14 13l5 2v3a2 2 0 01-2.2 2A16 16 0 013 7.2 2 2 0 015 4z" stroke-linejoin="round"/></svg>
       Anrufen
